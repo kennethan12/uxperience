@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Register
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-color: aliceblue">
+    <p style="font-size: 20px; text-align: center">Welcome to the fun.</p>
+
+    <ion-list>
+  
+        <ion-item>
+            <ion-input type="text" placeholder="Name"></ion-input>
+          </ion-item>
+
+        <ion-item>
+          <ion-input type="text" placeholder="Email"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-input type="password" placeholder="Password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-input type="text" placeholder="Comfirm Password"></ion-input>
+        </ion-item>
+      
+    </ion-list>
+
+    <button ion-button (click)="navigateToLogin()">Register</button>
+
+</ion-content>

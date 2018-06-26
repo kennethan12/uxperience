@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
-import { LoginPage } from '../login/login';
+import { ProfilePage } from '../profile/profile';
 import { RegistrationPage } from '../registration/registration';
 
+
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-login',
+  templateUrl: 'login.html'
 })
-export class HomePage {
+export class LoginPage {
 
   constructor(public navCtrl: NavController) {
 
   }
 
-  navigateToLogin() {
-    console.log("Navigating to LoginPage...");
+  navigateToProfile() {
+    console.log("Navigating to ProfilePage...");
 
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.push(ProfilePage);
   }
 
   navigateToRegistration() {
@@ -24,5 +25,6 @@ export class HomePage {
 
     this.navCtrl.push(RegistrationPage);
   }
+
 
 }

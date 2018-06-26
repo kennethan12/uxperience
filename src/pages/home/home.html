@@ -1,24 +1,16 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Welcome.
+      Welcome Home.
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding style="background-color: aliceblue">
-  <ion-list>
 
-    <ion-item>
-      <ion-input type="text" placeholder="Email"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-input type="password" placeholder="Password"></ion-input>
-    </ion-item>
-  
-  </ion-list>
+  <p style="text-align: center; font-size: 30px">Where the world comes to you.</p>
 
-  <button ion-button block>Log In</button>
-  <p style="text-align: center">Or <a href="#">sign up</a> here.</p>
+  <button ion-button block (click)="navigateToLogin()">Log In</button>
+  <button ion-button block color="secondary" (click)="navigateToRegistration()">Registration</button>
+
 </ion-content>
