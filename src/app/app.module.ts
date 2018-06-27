@@ -9,6 +9,12 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { RegistrationPage } from '../pages/registration/registration';
+import { ProductsPage } from '../pages/products/products';
+import { FoodPage } from '../pages/food/food';
+import { SurfingPage } from '../pages/surfing/surfing';
+import { WinePage } from '../pages/wine/wine';
+import { YogaPage } from '../pages/yoga/yoga';
+import { CapePointPage } from '../pages/capepoint/capepoint';
 
 @NgModule({
   declarations: [
@@ -16,7 +22,13 @@ import { RegistrationPage } from '../pages/registration/registration';
     HomePage,
     LoginPage,
     ProfilePage,
-    RegistrationPage
+    RegistrationPage,
+    ProductsPage,
+    FoodPage,
+    SurfingPage,
+    WinePage,
+    YogaPage,
+    CapePointPage
   ],
   imports: [
     BrowserModule,
@@ -25,10 +37,16 @@ import { RegistrationPage } from '../pages/registration/registration';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-   HomePage,
+    HomePage,
     LoginPage,
     ProfilePage,
-    RegistrationPage
+    RegistrationPage,
+    ProductsPage,
+    FoodPage,
+    SurfingPage,
+    WinePage,
+    YogaPage,
+    CapePointPage
   ],
   providers: [
     StatusBar,

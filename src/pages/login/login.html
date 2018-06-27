@@ -9,6 +9,22 @@
   <ion-content padding style="background-color: aliceblue">
     <p style="font-size: 20px; text-align: center">Log in to start exploring.</p>
 
+    <!--class notes
+    
+    <ion-input [(ngModel)] = "email"></ion-input>
+    <button ion-button (click)="pressMe(email, 2)">Press me</button>
+
+    <div *ngFor="let name of names">
+      {{name}}
+    </div>
+
+    <div *ngIf="flag==true">
+      {{complexObject.property1}}
+      {{complexObject.property2}}
+    </div>
+
+    end of notes-->
+
     <ion-list>
   
       <ion-item>
@@ -21,8 +37,8 @@
     
     </ion-list>
   
-    <button ion-button (click)="navigateToProfile()">Log In</button>
-    <button ion-button color="dark" clear (click)="navigateToRegistration()">Registration</button>
+    <button ion-button (click)="navigateToProducts()">Log In</button>
+    <button ion-button color="dark" clear (click)="navigateToRegistration()">Or Sign Up</button>
     
     <!--<p style="text-align: center">Or <a href="#">sign up</a> here.</p>-->
   

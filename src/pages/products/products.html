@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+        Explore
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-color: aliceblue">
+    <ion-list>
+        <ion-list-header>
+            Near You
+        </ion-list-header>
+        <ion-item>
+            <ion-thumbnail item-start>
+                <img src="../../assets/imgs/thumbnail-food.jpg">
+            </ion-thumbnail>
+            <h2>Cape Town Food Tour</h2>
+            <p>Kenneth iX • $100</p>
+            <button ion-button clear item-end (click)="navigateToFood()">View</button>
+        </ion-item>
+        <ion-item>
+            <ion-thumbnail item-start>
+                <img src="../../assets/imgs/thumbnail-surfing.jpg">
+            </ion-thumbnail>
+            <h2>Surfing Lesson</h2>
+            <p>Erich iX • $50</p>
+            <button ion-button clear item-end (click)="navigateToSurfing()">View</button>
+        </ion-item>
+        <ion-item>
+            <ion-thumbnail item-start>
+                <img src="../../assets/imgs/thumbnail-wine.jpg">
+            </ion-thumbnail>
+            <h2>Vineyard Wine Tour</h2>
+            <p>Ji iX • $100</p>
+            <button ion-button clear item-end (click)="navigateToWine()">View</button>
+        </ion-item>
+        <ion-item>
+            <ion-thumbnail item-start>
+                <img src="../../assets/imgs/thumbnail-yoga.jpg">
+            </ion-thumbnail>
+            <h2>Cape Town Yoga</h2>
+            <p>Grace iX • $40</p>
+            <button ion-button clear item-end (click)="navigateToYoga()">View</button>
+        </ion-item>
+        <ion-item>
+            <ion-thumbnail item-start>
+                <img src="../../assets/imgs/thumbnail-cape-point.jpg">
+            </ion-thumbnail>
+            <h2>Cape Point Tour</h2>
+            <p>Michelle iX • $150</p>
+            <button ion-button clear item-end (click)="navigateToCapePoint()">View</button>
+        </ion-item>
+    </ion-list>
+
+    <div text-center>
+        <button ion-button color="default" round (click)="navigateToProfile()">Profile</button>
+    </div>
+</ion-content>
