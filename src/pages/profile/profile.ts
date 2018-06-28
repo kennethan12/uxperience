@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { HistoryPage } from '../history/history';
 
 
 @Component({
@@ -19,4 +20,9 @@ export class ProfilePage {
     this.navCtrl.push(HomePage);
   }
 
+  navigateToHistory() {
+    console.log("Navigating to HistoryPage...");
+
+    this.navCtrl.push(HistoryPage);
+  }
 }

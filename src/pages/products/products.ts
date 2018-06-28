@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { FoodPage } from '../food/food';
-import { SurfingPage } from '../surfing/surfing';
-import { WinePage } from '../wine/wine';
-import { YogaPage } from '../yoga/yoga';
-import { CapePointPage } from '../capepoint/capepoint';
+import { NavController, NavParams } from 'ionic-angular';
 import { ProfilePage } from '../profile/profile';
+import { Product } from '../models/product';
+import { ProductPage } from '../product/product';
+import { ProductService } from '../../services/product.service';
 
 
 @Component({
@@ -14,38 +12,21 @@ import { ProfilePage } from '../profile/profile';
 })
 export class ProductsPage {
 
-    constructor(public navCtrl: NavController) {
+    public products: Array<Product>;
 
+    constructor(public navCtrl: NavController, 
+                public navParams: NavParams, 
+                public productService: ProductService) {
+
+        this.products = [];
+
+        this.products = this.productService.getAllProducts();
     }
 
-    navigateToFood() {
-        console.log("Navigating to FoodPage...");
-
-        this.navCtrl.push(FoodPage);
-    }
-
-    navigateToSurfing() {
-        console.log("Navigating to SurfingPage...");
-
-        this.navCtrl.push(SurfingPage);
-    }
-
-    navigateToWine() {
-        console.log("Navigating to WinePage...");
-
-        this.navCtrl.push(WinePage);
-    }
-
-    navigateToYoga() {
-        console.log("Navigating to YogaPage...");
-
-        this.navCtrl.push(YogaPage);
-    }
-
-    navigateToCapePoint() {
-        console.log("Navigating to CapePointPage...");
-
-        this.navCtrl.push(CapePointPage);
+    navigateToProduct(product: Product) {
+        this.navCtrl.push(ProductPage, {
+            productParameter: product
+        });
     }
 
     navigateToProfile() {
@@ -53,4 +34,5 @@ export class ProductsPage {
 
         this.navCtrl.push(ProfilePage);
     }
+
 }

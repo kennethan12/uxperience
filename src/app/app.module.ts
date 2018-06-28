@@ -10,11 +10,10 @@ import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { RegistrationPage } from '../pages/registration/registration';
 import { ProductsPage } from '../pages/products/products';
-import { FoodPage } from '../pages/food/food';
-import { SurfingPage } from '../pages/surfing/surfing';
-import { WinePage } from '../pages/wine/wine';
-import { YogaPage } from '../pages/yoga/yoga';
-import { CapePointPage } from '../pages/capepoint/capepoint';
+import { ProductPage } from '../pages/product/product';
+import { ProductService } from '../services/product.service';
+import { PaymentPage } from '../pages/payment/payment';
+import { HistoryPage } from '../pages/history/history';
 
 @NgModule({
   declarations: [
@@ -24,11 +23,9 @@ import { CapePointPage } from '../pages/capepoint/capepoint';
     ProfilePage,
     RegistrationPage,
     ProductsPage,
-    FoodPage,
-    SurfingPage,
-    WinePage,
-    YogaPage,
-    CapePointPage
+    ProductPage,
+    PaymentPage,
+    HistoryPage
   ],
   imports: [
     BrowserModule,
@@ -42,15 +39,14 @@ import { CapePointPage } from '../pages/capepoint/capepoint';
     ProfilePage,
     RegistrationPage,
     ProductsPage,
-    FoodPage,
-    SurfingPage,
-    WinePage,
-    YogaPage,
-    CapePointPage
+    ProductPage,
+    PaymentPage,
+    HistoryPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    ProductService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

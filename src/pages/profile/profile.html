@@ -7,24 +7,20 @@
 </ion-header>
 
 <ion-content padding style="background-color: aliceblue">
-    <p style="font-size: 20px; text-align: center">Welcome to your world.</p>
+    <p style="font-size: 20px; text-align: center; margin-top: 5px">Welcome to your world.</p>
 
     <div>
         <img src="https://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg"
         alt="cat">
     </div>
 
-    <table class="styled">
-        <tr>
-            <th>Name</th>
-        </tr>
-        <tr>
-            <td>Age</td>
-            <td>Gender</td>
-        </tr>
-
-    </table>
-
+    <div text-center>
+        <h1 style="margin-top: 10px">Name</h1>
+        <p>Age • Gender</p>
+    </div>
+    <div text-center>
+            <button ion-button clear color='dark' (click)="navigateToHistory()">Your Payment History</button>
+        </div> 
     <div text-center>
         <button ion-button clear (click)="navigateToHome()">Log out</button>
     </div> 
