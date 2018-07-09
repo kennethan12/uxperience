@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ProfilePage } from '../profile/profile';
 import { RegistrationPage } from '../registration/registration';
 import { ProductsPage } from '../products/products';
+import { Http } from '@angular/http';
 
 
 @Component({
@@ -13,34 +14,47 @@ export class LoginPage {
 
   public email: string;
   public password: string;
-  public names: Array<string>;
-  public names2: string[];
-  public age: number;
-  
-  public flag: boolean = true;
 
-  public complexObject: any;
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public http: Http) 
+    {}
 
-  constructor(public navCtrl: NavController) {
+  login() {
+    this.http.post('http://localhost:3000/login', {
+      email: this.email,
+      password: this.password
+    }).subscribe(
+      result => {
+        console.log(result);
 
-    /* class notes */
+        var jwtResponse = result.json();
+        var token = jwtResponse.token;
 
-    this.email = "email@gmail.com"
+        localStorage.setItem("TOKEN", token);
 
-    this.names = [
-      "miki",
-      "perry",
-      "sabreena"
-    ];
-
-    this.names.push("Erich");
-
-    this.complexObject = {
-      property1: "Some value",
-      property2: "Another value"
-    };
+        this.navCtrl.push(ProductsPage);
+      },
+      err => {
+        console.log(err);
+      }
+    )
   }
 
+  navigateToProfile() {
+    console.log("Navigating to ProfilePage...");
+
+    this.navCtrl.push(ProfilePage);
+  }
+
+  navigateToRegistration() {
+    console.log("Navigating to RegistrationPage...")
+
+    this.navCtrl.push(RegistrationPage);
+  }
+
+  /*
   pressMe(argument1: string, argument2: number) {
     console.log("This email is: " + this.email);
 
@@ -75,27 +89,9 @@ export class LoginPage {
     } else {
       // Party
     }
-    */
+    
   }
 
-  /* end of notes */
-
-  navigateToProducts() {
-    console.log("Navigating to ProductsPage...");
-
-    this.navCtrl.push(ProductsPage);
-  }
-
-  navigateToProfile() {
-    console.log("Navigating to ProfilePage...");
-
-    this.navCtrl.push(ProfilePage);
-  }
-
-  navigateToRegistration() {
-    console.log("Navigating to RegistrationPage...")
-
-    this.navCtrl.push(RegistrationPage);
-  }
+  end of notes */
 }
 
