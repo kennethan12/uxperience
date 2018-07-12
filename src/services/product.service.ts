@@ -14,9 +14,9 @@ export class ProductService {
     /*
         callback= function(err, data) {...}
     */
-    getAllProducts(callback) {
+    getAllProducts() {
 
-        /*
+        
         this.products = [];
 
         
@@ -28,7 +28,7 @@ export class ProductService {
         product1.imageThumbnail = "../../assets/imgs/thumbnail-food.jpg";
         product1.image = "../../assets/imgs/food.jpg"
 
-        /*
+        
         var product2 = new Product();
         product2.host = "Erich iX";
         product2.name = "Surfing Lesson";
@@ -62,19 +62,19 @@ export class ProductService {
         product5.image = "../../assets/imgs/cape-point.jpg"
 
         
-        */
+        
 
-        /*
+        
         this.products.push(product1);
 
-        /*
+        
         this.products.push(product2);
         this.products.push(product3);
         this.products.push(product4);
         this.products.push(product5);
-        */
+        
 
-        /*
+        
         return this.products;
         
 

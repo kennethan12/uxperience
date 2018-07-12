@@ -15,6 +15,8 @@ import { ProductPage } from '../pages/product/product';
 import { ProductService } from '../services/product.service';
 import { PaymentPage } from '../pages/payment/payment';
 import { HistoryPage } from '../pages/history/history';
+import { FormsModule } from '@angular/forms';
+import { AddproductPage } from '../pages/addproduct/addproduct';
 
 @NgModule({
   declarations: [
@@ -26,12 +28,14 @@ import { HistoryPage } from '../pages/history/history';
     ProductsPage,
     ProductPage,
     PaymentPage,
-    HistoryPage
+    HistoryPage,
+    AddproductPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,7 +47,8 @@ import { HistoryPage } from '../pages/history/history';
     ProductsPage,
     ProductPage,
     PaymentPage,
-    HistoryPage
+    HistoryPage,
+    AddproductPage
   ],
   providers: [
     StatusBar,
