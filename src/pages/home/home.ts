@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { RegistrationPage } from '../registration/registration';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { ProductsPage } from '../products/products';
+import { PaymentPage } from '../payment/payment';
 
 @Component({
   selector: 'page-home',
@@ -9,8 +13,25 @@ import { RegistrationPage } from '../registration/registration';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  posts: any;
 
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public http: Http) {
+
+    if (localStorage.getItem("TOKEN")) {
+      this.navCtrl.push(ProductsPage);
+
+      this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
+        .subscribe(
+          result => {
+            console.log(result.json());
+          },
+          err => {
+            console.log(err); // "Invalid log in"
+          }
+        );
+    }
   }
 
   navigateToLogin() {

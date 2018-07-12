@@ -6,22 +6,30 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding style="background-color: aliceblue">
-    <ion-list>
-        <ion-list-header>
-            Near You
-        </ion-list-header>
-        <ion-item *ngFor="let product of products">
-            <ion-thumbnail item-start>
-                <img src="{{product.imageThumbnail}}">
-            </ion-thumbnail>
-            <h2>{{product.name}}</h2>
-            <p>{{product.host}} • ${{product.price}}</p>
-            <button ion-button clear item-end (click)="navigateToProduct(product)">View</button>
-        </ion-item>
-    </ion-list>
+<ion-content class="card-background-page">
+    <ion-card type="button" (click)="navigateToLocation()">
+      <img src="../../assets/imgs/arizona-card.jpg"/>
+      <div class="card-title">Arizona</div>
+      <div class="card-subtitle">41 Listings</div>
+    </ion-card>
+  
+    <ion-card type="button" (click)="navigateToLocation()">
+      <img src="../../assets/imgs/california-card.jpg"/>
+      <div class="card-title">California</div>
+      <div class="card-subtitle">64 Listings</div>
+    </ion-card>
+  
+    <ion-card type="button" (click)="navigateToLocation()">
+      <img src="../../assets/imgs/new-york-card.jpg"/>
+      <div class="card-title">New York</div>
+      <div class="card-subtitle">72 Listings</div>
+    </ion-card>
+  
+    <ion-card type="button" (click)="navigateToLocation()">
+      <img src="../../assets/imgs/paris-card.jpg"/>
+      <div class="card-title">Paris</div>
+      <div class="card-subtitle">28 Listings</div>
+    </ion-card>
 
-    <div text-center>
-        <button ion-button color="default" round (click)="navigateToProfile()">Profile</button>
-    </div>
-</ion-content>
+  
+  </ion-content>

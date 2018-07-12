@@ -25,6 +25,24 @@ export class ProductPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductPage');
+
+   /* this.productService.getAllProducts(
+      (err, data) => {
+        //TODO: Use the data
+        if (err) {
+          //Raise an alert UI
+          return;
+        }
+
+        this.products = data;
+      }
+    ); 
+    
+    this.produceService.getAllProducts(
+      function(err, data){
+        this.products =data;
+      }
+    ); */
   }
 
   navigateToPayment() {

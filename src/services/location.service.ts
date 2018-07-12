@@ -3,12 +3,12 @@ import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
 
 @Injectable()
-export class ProductService {
+export class LocationService {
 
-    private products: Array<Product>;
+    private locations: Array<Location>;
 
     constructor(private http: Http) {
-        this.products = [];
+        this.locations = [];
     }
 
     /*
@@ -87,8 +87,8 @@ export class ProductService {
     }
 
     
-    createProduct(productData: Product, callback: Function) {
-        this.http.post("http://localhost:3000/addproduct", productData)
+    createProduct(locationData: Location, callback: Function) {
+        this.http.post("http://localhost:3000/addproduct", locationData)
             .subscribe(
                 result => {
                     callback(null, result.json());

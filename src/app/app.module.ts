@@ -3,6 +3,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule, IonicPageModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -14,6 +16,8 @@ import { ProductPage } from '../pages/product/product';
 import { ProductService } from '../services/product.service';
 import { PaymentPage } from '../pages/payment/payment';
 import { HistoryPage } from '../pages/history/history';
+import { LocationPage } from '../pages/location/location';
+import { LocationService } from '../services/location.service';
 
 @NgModule({
   declarations: [
@@ -25,11 +29,14 @@ import { HistoryPage } from '../pages/history/history';
     ProductsPage,
     ProductPage,
     PaymentPage,
-    HistoryPage
-  ],
+    HistoryPage,
+    LocationPage
+ ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,12 +48,14 @@ import { HistoryPage } from '../pages/history/history';
     ProductsPage,
     ProductPage,
     PaymentPage,
-    HistoryPage
+    HistoryPage,
+    LocationPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     ProductService,
+    LocationService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -1,45 +1,42 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>
-        Login
-      </ion-title>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-color: aliceblue">
+  <p style="font-size: 20px; text-align: center">Log in to start exploring.</p>
+
+  <!--class notes
   
-  <ion-content padding style="background-color: aliceblue">
-    <p style="font-size: 20px; text-align: center">Log in to start exploring.</p>
+  <ion-input [(ngModel)] = "email"></ion-input>
+  <button ion-button (click)="pressMe(email, 2)">Press me</button>
+  <div *ngFor="let name of names">
+    {{name}}
+  </div>
+  <div *ngIf="flag==true">
+    {{complexObject.property1}}
+    {{complexObject.property2}}
+  </div>
+  end of notes-->
 
-    <!--class notes
-    
-    <ion-input [(ngModel)] = "email"></ion-input>
-    <button ion-button (click)="pressMe(email, 2)">Press me</button>
+  <ion-list>
 
-    <div *ngFor="let name of names">
-      {{name}}
-    </div>
-
-    <div *ngIf="flag==true">
-      {{complexObject.property1}}
-      {{complexObject.property2}}
-    </div>
-
-    end of notes-->
-
-    <ion-list>
+    <ion-item>
+      <ion-input [(ngModel)]="email" type="text" placeholder="Email"></ion-input>
+    </ion-item>
   
-      <ion-item>
-        <ion-input type="text" placeholder="Email"></ion-input>
-      </ion-item>
-    
-      <ion-item>
-        <ion-input type="password" placeholder="Password"></ion-input>
-      </ion-item>
-    
-    </ion-list>
+    <ion-item>
+      <ion-input [(ngModel)]="password" type="password" placeholder="Password"></ion-input>
+    </ion-item>
   
-    <button ion-button (click)="navigateToProducts()">Log In</button>
-    <button ion-button color="dark" clear (click)="navigateToRegistration()">Or Sign Up</button>
-    
-    <!--<p style="text-align: center">Or <a href="#">sign up</a> here.</p>-->
+  </ion-list>
+
+  <button ion-button (click)="login()">Log In</button>
+  <button ion-button color="dark" clear (click)="navigateToRegistration()">Or Sign Up</button>
   
-  </ion-content>
+  <!--<p style="text-align: center">Or <a href="#">sign up</a> here.</p>-->
+
+</ion-content>

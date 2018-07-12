@@ -1,8 +1,32 @@
+<ion-menu [content]="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <button ion-item (click)="navigateToProducts">
+          Products
+        </button>
+        <button ion-item (click)="navigateToHistory">
+          History
+        </button>
+        <button ion-item (click)="navigate">
+          Events
+        </button>
+        <button ion-item (click)="closeMenu()">
+          Close Menu
+        </button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
 <ion-header>
     <ion-navbar>
-        <ion-title>
-            Profile
-        </ion-title>
+        <p><ion-title>
+            Your Profile
+        </ion-title></p>
     </ion-navbar>
 </ion-header>
 
