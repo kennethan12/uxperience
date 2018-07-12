@@ -80,7 +80,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
 
       this.http.post("http://localhost:3000/payments?jwt=" + localStorage.getItem("TOKEN"), {
         stripeToken: token.id,
-        productId: 1
+        menuId: 1
       }).subscribe(
         result => {
           var json = result.json();

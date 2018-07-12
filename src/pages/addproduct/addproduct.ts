@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { ProductsPage } from '../products/products';
+import { Menu } from '../../../node_modules/ionic-angular/umd/components/app/menu-interface';
 
 /**
  * Generated class for the AddproductPage page.
@@ -38,7 +39,12 @@ export class AddproductPage {
     }).subscribe(
       result => {
         console.log(result);
-        this.navCtrl.push(ProductsPage);
+
+        var menu_extract=result.json();
+        
+
+        this.navCtrl.push(ProductsPage, menu_extract.menu_id);
+
       },
       err => {
         console.log(err);
