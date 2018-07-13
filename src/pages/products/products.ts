@@ -6,8 +6,11 @@ import { ProductPage } from '../product/product';
 import { ProductService } from '../../services/product.service';
 import { Http } from '@angular/http';
 import { AddproductPage } from '../addproduct/addproduct';
+<<<<<<< HEAD
 import { LocationsPage } from '../locations/locations';
 import { LocationPage } from '../location/location';
+=======
+>>>>>>> 84c1653c1736182b1f07da52f264afe942688efb
 
 
 @Component({
@@ -18,8 +21,11 @@ export class ProductsPage {
 
     public products: Array<Product>;
 
+<<<<<<< HEAD
     public name: string;
 
+=======
+>>>>>>> 84c1653c1736182b1f07da52f264afe942688efb
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
@@ -43,6 +49,19 @@ export class ProductsPage {
           }
 
     }
+/*
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad ProductsPage');
+
+        this.productService.getAllProducts(
+            (err, data) => {
+                if (err) {
+                    return;
+                }
+                this.products = data;
+            }
+        );
+    }*/
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad ProductsPage');
@@ -91,9 +110,12 @@ export class ProductsPage {
         this.navCtrl.push(AddproductPage);
     }
 
+<<<<<<< HEAD
     navigateToLocations() {
         console.log("Navigating to LocationsPage...");
 
         this.navCtrl.push(LocationsPage);
     }
+=======
+>>>>>>> 84c1653c1736182b1f07da52f264afe942688efb
 }

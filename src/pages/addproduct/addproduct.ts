@@ -39,8 +39,10 @@ export class AddproductPage {
       time: this.time.toString()
     }).subscribe(
       result => {
-        console.log(result);
-        this.navCtrl.push(ProductsPage);
+        console.log(result.json());
+        this.navCtrl.push(ProductsPage, {
+          productInfo: result.json()
+        });
       },
       err => {
         console.log(err);

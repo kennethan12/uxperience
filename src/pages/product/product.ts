@@ -20,7 +20,7 @@ export class ProductPage {
   public product: Product = new Product();
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.product = this.navParams.get("productParameter"); //new Product()
+    this.product = this.navParams.get("menu"); //new Product()
   }
 
   ionViewDidLoad() {
