@@ -22,10 +22,12 @@ export class LocationPage {
 
   public location: Location = new Location();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public products: Array<Product>;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, productService: ProductService) {
     this.location = this.navParams.get("locationParameter"); //new Location()
 
-    var productService = new ProductService();
+    this.products = productService.getAllProducts();
     
   }
 

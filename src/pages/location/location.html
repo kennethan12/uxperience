@@ -14,38 +14,38 @@
 </ion-header>
 
 <ion-content>
-    <ion-list>
-            <ion-card type="button" (click)="navigateToProduct()">
-                <ion-item *ngFor="let product of products">
-                    <img src=="{{product.imageThumbnail}}">
-                  <h2>{{product.name}}</h2>
-                  <p>{{product.date}}</p>
-                </ion-item>
-              
-                <ion-card-content>
-                  <p>{{description}}</p>
-                </ion-card-content>
-              
-                <ion-row>
-                  <ion-col>
-                    <button ion-button icon-start clear small>
-                      <ion-icon name="chatboxes"></ion-icon>
-                      <div>Reviews</div>
-                    </button>
-                  </ion-col>
-                  <ion-col>
-                    <button ion-button icon-start clear small>
-                      <ion-icon name="cart"></ion-icon>
-                      <div>Buy now</div>
-                    </button>
-                 </ion-col>
-                  <ion-col center text-center>
-                    <ion-note>
-                      11h ago
-                    </ion-note>
-                  </ion-col>
-                </ion-row>
-              </ion-card>
-      </ion-list>
+  <ion-list>
+    <ion-card type="button" (click)="navigateToProduct()" *ngFor="let product of products">
+      <ion-item >
+        <img src="{{product.imageThumbnail}}">
+        <h2>{{product.name}}</h2>
+        <p>{{product.date}}</p>
+      </ion-item>
+
+      <ion-card-content>
+        <p>{{description}}</p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-start clear small>
+            <ion-icon name="chatboxes"></ion-icon>
+            <div>Reviews</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-start clear small>
+            <ion-icon name="cart"></ion-icon>
+            <div>Buy now</div>
+          </button>
+        </ion-col>
+        <ion-col center text-center>
+          <ion-note>
+            11h ago
+          </ion-note>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
 
 </ion-content>
