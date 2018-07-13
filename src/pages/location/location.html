@@ -15,7 +15,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-card type="button" (click)="navigateToProduct()" *ngFor="let product of products">
+    <ion-card type="button" (click)="navigateToProduct(product)" *ngFor="let product of products">
       <ion-item >
         <img src="{{product.imageThumbnail}}">
         <h2>{{product.name}}</h2>

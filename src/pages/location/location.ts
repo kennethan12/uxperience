@@ -35,9 +35,9 @@ export class LocationPage {
     console.log('ionViewDidLoad LocationPage');
   }
 
-  navigateToProduct() {
+  navigateToProduct(product: Product) {
     this.navCtrl.push(ProductPage, {
-        productParameter: Product
+        productParameter: product
     });
   }
 
