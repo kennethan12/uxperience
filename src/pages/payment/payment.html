@@ -7,7 +7,6 @@
 </ion-header>
 
 <ion-content>
-<script src="https://js.stripe.com/v3/"></script>
 
   <div text-center>
     <h2 style="font-size: 15px; margin-bottom: 0px">Sign up for</h2>
@@ -16,46 +15,18 @@
   </div>
 
   <p></p>
-  <!--<ion-list>
-  
-    <ion-item>
-      <ion-label>Country</ion-label>
-      <ion-select [(ngModel)]="country" interface="popover">
-        <ion-option value="1">United States</ion-option>
-        <ion-option value="2">South Africa</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-input type="text" placeholder="Cardholder's Name"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="number" placeholder="Card Number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="number" placeholder="CVV"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="number" placeholder="Card Number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="text" placeholder="Exp. Date (MM/YY)"></ion-input>
-    </ion-item>
-  </ion-list>
 
-  <div text-center>
-      <button ion-button color="dark" round (click)="navigateToHistory()">Pay Now</button>
-  </div>-->
+  <script src="https://js.stripe.com/v3/"></script>
 
   <form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
     <div class="form-row">
       <label for="card-info">Card Info</label>
       <div id="card-info" #cardInfo></div>
-  
+
       <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
     </div>
-  
-    <button type="submit">Pay ${{product?.price}}</button>
-  </form>
 
+    <button type="submit">Pay $777</button>
+  </form>
 
 </ion-content>

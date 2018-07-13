@@ -13,27 +13,37 @@
 </ion-header>
 
 
-<ion-content padding style="background-color: aliceblue">
+<ion-content padding style="background-color: #f8e9ce">
 
+    <div text-center>
+        <img width=50px height=50px src="../../assets/imgs/localhostlogo.png">
+      </div>
+
+      <p style="font-size: 20px; text-align: center">Share your experience.</p>
   <ion-list>
   
     <ion-item>
-        <ion-input [(ngModel)]='name' type="text" placeholder="Experience Name"></ion-input>
+      <ion-input [(ngModel)]='name' type="text" placeholder="Experience Name"></ion-input>
     </ion-item>
-    
+  
     <ion-item>
-        <ion-input [(ngModel)]='description' type="text" placeholder="Description of Experience"></ion-input>
+      <ion-input [(ngModel)]='description' type="text" placeholder="Description of Experience"></ion-input>
     </ion-item>
-
+  
     <ion-item>
       <ion-input [(ngModel)]='price' type="text" placeholder="Price"></ion-input>
     </ion-item>
   
     <ion-item>
-      <ion-input [(ngModel)]='date_time' type="text" placeholder="Date And Time"></ion-input>
+      <ion-input [(ngModel)]='date' type="text" placeholder="Date"></ion-input>
     </ion-item>
-
-</ion-list>
-
-<button ion-button (click)="addproduct()">Add Experience</button>
+  
+    <ion-item>
+      <ion-input [(ngModel)]='time' type="text" placeholder="time"></ion-input>
+    </ion-item>
+  
+  </ion-list>
+<div text-center>
+<button color='accent1' ion-button (click)="addproduct()">Add Experience</button>
+</div>
 </ion-content>

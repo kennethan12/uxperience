@@ -45,7 +45,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
           }
         );
     }
-    //this.product = this.navParams.get("productParameter"); //new Product()
+    this.product = this.navParams.get("productParameter"); //new Product()
   }
 
   ngAfterViewInit(): void {
@@ -78,7 +78,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
       console.log('Success!', token);
       // ...send the token to the your backend to process the charge
 
-      this.http.post("http://localhost:3000/payments?jwt=" + localStorage.getItem("TOKEN"), {
+      this.http.post("http://localhost:3000/payments/?jwt=" + localStorage.getItem("TOKEN"), {
         stripeToken: token.id,
         menuId: 1
       }).subscribe(

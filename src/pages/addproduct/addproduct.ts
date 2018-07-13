@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { ProductsPage } from '../products/products';
-import { Menu } from '../../../node_modules/ionic-angular/umd/components/app/menu-interface';
+import { Time } from '@angular/common';
 
 /**
  * Generated class for the AddproductPage page.
@@ -21,8 +21,8 @@ export class AddproductPage {
   public name: string;
   public description: string;
   public price: string;
-  public date_time: Date;
-  public availability: boolean;
+  public date: Date;
+  public time: Time;
 
   constructor(
     public navCtrl: NavController, 
@@ -35,16 +35,14 @@ export class AddproductPage {
       name: this.name,
       description: this.description,
       price: this.price,
-      date_time: this.date_time
+      date: this.date.toString(),
+      time: this.time.toString()
     }).subscribe(
       result => {
-        console.log(result);
-
-        var menu_extract=result.json();
-        
-
-        this.navCtrl.push(ProductsPage, menu_extract.menu_id);
-
+        console.log(result.json());
+        this.navCtrl.push(ProductsPage, {
+          productInfo: result.json()
+        });
       },
       err => {
         console.log(err);

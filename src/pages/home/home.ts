@@ -25,13 +25,12 @@ export class HomePage {
         .subscribe(
           result => {
             console.log(result.json());
+            this.navCtrl.push(ProductsPage);
           },
           err => {
             console.log(err); // "Invalid log in"
           }
         );
-
-        this.navCtrl.push(ProductsPage);
     }
   }
 

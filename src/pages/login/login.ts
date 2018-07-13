@@ -85,7 +85,10 @@ export class LoginPage {
     }
     
   }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 5cedc30609313fad014cc8759eaf55f9b9fabced
   end of notes */
 }
-

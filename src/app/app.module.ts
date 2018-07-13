@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule, IonicPageModule } from 'ionic
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -17,7 +18,7 @@ import { PaymentPage } from '../pages/payment/payment';
 import { HistoryPage } from '../pages/history/history';
 import { LocationPage } from '../pages/location/location';
 import { LocationService } from '../services/location.service';
-import { FormsModule } from '@angular/forms';
+import { LocationsPage } from '../pages/locations/locations';
 import { AddproductPage } from '../pages/addproduct/addproduct';
 
 @NgModule({
@@ -32,8 +33,9 @@ import { AddproductPage } from '../pages/addproduct/addproduct';
     PaymentPage,
     HistoryPage,
     LocationPage,
+    LocationsPage,
     AddproductPage
-  ],
+ ],
   imports: [
     BrowserModule,
     HttpModule,
@@ -52,6 +54,7 @@ import { AddproductPage } from '../pages/addproduct/addproduct';
     PaymentPage,
     HistoryPage,
     LocationPage,
+    LocationsPage,
     AddproductPage
   ],
   providers: [

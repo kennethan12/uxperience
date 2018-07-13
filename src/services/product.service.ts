@@ -10,6 +10,10 @@ export class ProductService {
     constructor() {
         this.products = [];
     }
+
+    /*
+        callback= function(err, data) {...}
+    */
     getAllProducts() {
 
         
@@ -33,7 +37,6 @@ export class ProductService {
         product2.imageThumbnail = "../../assets/imgs/thumbnail-surfing.jpg";
         product2.image = "../../assets/imgs/surfing.jpg"
 
-
         var product3 = new Product();
         product3.host = "Amy iX";
         product3.name = "Vineyard Wine Tour";
@@ -42,15 +45,13 @@ export class ProductService {
         product3.imageThumbnail = "../../assets/imgs/thumbnail-wine.jpg";
         product3.image = "../../assets/imgs/wine.jpg"
 
-
         var product4 = new Product();
         product4.host = "Grace iX";
         product4.name = "Cape Town Yoga";
         product4.description = "Touring one of the most beautiful cities in the world isn't an excuse to avoid workouts. Join myUtopia at a cheap membership price for a fantastic hardcore yoga workout.";
         product4.price = 40;
         product4.imageThumbnail = "../../assets/imgs/thumbnail-yoga.jpg";
-        product4.image = "../../assets/imgs/yoga.jpg";
-
+        product4.image = "../../assets/imgs/yoga.jpg"
 
         var product5 = new Product();
         product5.host = "Michelle iX";
@@ -58,11 +59,16 @@ export class ProductService {
         product5.description = "Learn about Cape Town's history and culture in this rewarding tour. It's the most beautiful place in the world.";
         product5.price = 150;
         product5.imageThumbnail = "../../assets/imgs/thumbnail-cape-point.jpg";
-        product5.image = "../../assets/imgs/cape-point.jpg";
+        product5.image = "../../assets/imgs/cape-point.jpg"
+
         
     
         
-        this.products.push(product1);  
+
+        
+        this.products.push(product1);
+
+        
         this.products.push(product2);
         this.products.push(product3);
         this.products.push(product4);
