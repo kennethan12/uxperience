@@ -1,8 +1,9 @@
-import { Component, ChangeDetectorRef, AfterViewInit, OnDestroy, ViewChild, ElementRef} from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { Component, AfterViewInit, OnDestroy, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Product } from '../models/product';
+import { HistoryPage } from '../history/history';
+import { Http } from '@angular/http';
 import { NgForm } from '@angular/forms';
-declare var stripe: any;
-declare var elements: any;
 
 /**
  * Generated class for the PaymentPage page.
@@ -24,28 +25,37 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
   cardHandler = this.onChange.bind(this);
   error: string;
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public http: Http,
+    private cd: ChangeDetectorRef
+  ) {
 
-  ngAfterViewInit() {
-  const style = {
-    base: {
-      lineHeight: '24px',
-      fontFamily: 'monospace',
-      fontSmoothing: 'antialiased',
-      fontSize: '19px',
-      '::placeholder': {
-        color: 'purple'
-      }
+    if (localStorage.getItem("TOKEN")) {
+      
+      this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
+        .subscribe(
+          result => {
+            console.log(result.json());
+            this.product = this.navParams.get("productParameter"); //new Product()
+          },
+          err => {
+            console.log(err); // "Invalid log in"
+          }
+        );
     }
-  };
+    //this.product = this.navParams.get("productParameter"); //new Product()
+  }
 
-  this.card = elements.create('card', { style });
-  this.card.mount(this.cardInfo.nativeElement);
+  ngAfterViewInit(): void {
+    this.card = elements.create('card');
+    this.card.mount(this.cardInfo.nativeElement);
 
-  this.card.addEventListener('change', this.cardHandler);
-}
+    this.card.addEventListener('change', this.cardHandler);
+  }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.card.removeEventListener('change', this.cardHandler);
     this.card.destroy();
   }
@@ -67,34 +77,24 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
     } else {
       console.log('Success!', token);
       // ...send the token to the your backend to process the charge
+
+      this.http.post("http://localhost:3000/payments?jwt=" + localStorage.getItem("TOKEN"), {
+        stripeToken: token.id,
+        menuId: 1
+      }).subscribe(
+        result => {
+          var json = result.json();
+          // json.id;
+        },
+
+        err => {
+          console.log(err);
+        }
+      )
     }
   }
-}
-/*
+
   public product: Product = new Product();
-
-  constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams,
-    public http: Http
-  ) {
-
-    if (localStorage.getItem("TOKEN")) {
-      
-      this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
-        .subscribe(
-          result => {
-            console.log(result.json());
-            this.product = this.navParams.get("productParameter"); //new Product()
-          },
-          err => {
-            console.log(err); // "Invalid log in"
-          }
-        );
-    }
-    //this.product = this.navParams.get("productParameter"); //new Product()
-  }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad PaymentPage');
   }
@@ -104,4 +104,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
 
     this.navCtrl.push(HistoryPage, {productParameter: this.product});
   }
-*/
+
+  
+
+}

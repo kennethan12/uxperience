@@ -31,6 +31,8 @@ export class HomePage {
             console.log(err); // "Invalid log in"
           }
         );
+
+        this.navCtrl.push(ProductsPage);
     }
   }
 

@@ -7,6 +7,7 @@ import { ProductService } from '../../services/product.service';
 import { Http } from '@angular/http';
 import { Location } from '../models/location';
 import { LocationPage } from '../location/location';
+import { AddproductPage } from '../addproduct/addproduct';
 
 
 @Component({
@@ -23,6 +24,8 @@ export class ProductsPage {
         public productService: ProductService,
         public http: Http
     ) {
+        this.products = [];
+        this.products = this.productService.getAllProducts();
 
         if (localStorage.getItem("TOKEN")) {
       
@@ -38,7 +41,7 @@ export class ProductsPage {
           }
 
     }
-
+/*
     ionViewDidLoad() {
         console.log('ionViewDidLoad ProductsPage');
 
@@ -50,6 +53,12 @@ export class ProductsPage {
                 this.products = data;
             }
         );
+    }*/
+
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad ProductsPage');
+
+        this.productService.getAllProducts();
     }
 
      navigateToLocation(location: Location) {
@@ -71,6 +80,12 @@ export class ProductsPage {
         console.log("Navigating to ProfilePage...");
 
         this.navCtrl.push(ProfilePage);
+    }
+
+    navigateToAddProduct() {
+        console.log("Navigating to AddproductPage...");
+
+        this.navCtrl.push(AddproductPage);
     }
 
 }

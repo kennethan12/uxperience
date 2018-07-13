@@ -35,6 +35,7 @@ export class ProfilePage {
   navigateToHome() {
     console.log("Navigating to HomePage...");
 
+    localStorage.removeItem("TOKEN");
     this.navCtrl.push(HomePage);
   }
 

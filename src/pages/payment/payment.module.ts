@@ -7,7 +7,7 @@ import { PaymentPage } from './payment';
     PaymentPage,
   ],
   imports: [
-    IonicPageModule.forChild(PaymentPage),
+    IonicPageModule.forChild(PaymentPage)
   ],
 })
 export class PaymentPageModule {}

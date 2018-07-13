@@ -85,5 +85,7 @@ export class LoginPage {
     }
     
   }
+
   end of notes */
 }
+
