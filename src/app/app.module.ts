@@ -18,6 +18,8 @@ import { PaymentPage } from '../pages/payment/payment';
 import { HistoryPage } from '../pages/history/history';
 import { LocationPage } from '../pages/location/location';
 import { LocationService } from '../services/location.service';
+import { LocationsPage } from '../pages/locations/locations';
+import { AddproductPage } from '../pages/addproduct/addproduct';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { LocationService } from '../services/location.service';
     ProductPage,
     PaymentPage,
     HistoryPage,
-    LocationPage
+    LocationPage,
+    LocationsPage,
+    AddproductPage
  ],
   imports: [
     BrowserModule,
@@ -49,7 +53,9 @@ import { LocationService } from '../services/location.service';
     ProductPage,
     PaymentPage,
     HistoryPage,
-    LocationPage
+    LocationPage,
+    LocationsPage,
+    AddproductPage
   ],
   providers: [
     StatusBar,

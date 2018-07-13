@@ -7,17 +7,26 @@
 </ion-header>
 
 <ion-content>
-<script src="https://js.stripe.com/v3/"></script>
 
-<form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
-  <div class="form-row">
-    <label for="card-info">Card Info</label>
-    <div id="card-info" #cardInfo></div>
-
-    <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
+  <div text-center>
+    <h2 style="font-size: 15px; margin-bottom: 0px">Sign up for</h2>
+    <h1 style="font-size: 20px; margin-top: 0px">{{product?.name}}</h1>
+    ${{product?.price}}
   </div>
 
-  <button type="submit">Pay $777</button>
-</form>
+  <p></p>
+
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
+    <div class="form-row">
+      <label for="card-info">Card Info</label>
+      <div id="card-info" #cardInfo></div>
+
+      <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
+    </div>
+
+    <button type="submit">Pay $777</button>
+  </form>
 
 </ion-content>
