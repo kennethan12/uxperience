@@ -7,7 +7,7 @@ export class ProductService {
 
     private products: Array<Product>;
 
-    constructor(private http: Http) {
+    constructor() {
         this.products = [];
     }
 
@@ -62,6 +62,7 @@ export class ProductService {
         product5.image = "../../assets/imgs/cape-point.jpg"
 
         
+    
         
 
         
@@ -96,7 +97,7 @@ export class ProductService {
         this.http.get('url')*/
     }
 
-    
+    /*
     createProduct(productData: Product, callback: Function) {
         this.http.post("http://localhost:3000/addproduct", productData)
             .subscribe(
@@ -108,5 +109,6 @@ export class ProductService {
                 }
             )
     }
+    */
     
 }

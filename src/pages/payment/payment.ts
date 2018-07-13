@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-import { Component, ChangeDetectorRef, AfterViewInit, OnDestroy, ViewChild, ElementRef} from '@angular/core';
-import { IonicPage } from 'ionic-angular';
-import { NgForm } from '@angular/forms';
-declare var stripe: any;
-declare var elements: any;
-=======
 import { Component, AfterViewInit, OnDestroy, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Product } from '../models/product';
 import { HistoryPage } from '../history/history';
 import { Http } from '@angular/http';
 import { NgForm } from '@angular/forms';
->>>>>>> 84c1653c1736182b1f07da52f264afe942688efb
 
 /**
  * Generated class for the PaymentPage page.
@@ -33,63 +25,6 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
   cardHandler = this.onChange.bind(this);
   error: string;
 
-<<<<<<< HEAD
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngAfterViewInit() {
-  const style = {
-    base: {
-      lineHeight: '24px',
-      fontFamily: 'monospace',
-      fontSmoothing: 'antialiased',
-      fontSize: '19px',
-      '::placeholder': {
-        color: 'purple'
-      }
-    }
-  };
-
-  this.card = elements.create('card', { style });
-  this.card.mount(this.cardInfo.nativeElement);
-
-  this.card.addEventListener('change', this.cardHandler);
-}
-
-  ngOnDestroy() {
-    this.card.removeEventListener('change', this.cardHandler);
-    this.card.destroy();
-  }
-
-  onChange({ error }) {
-    if (error) {
-      this.error = error.message;
-    } else {
-      this.error = null;
-    }
-    this.cd.detectChanges();
-  }
-
-  async onSubmit(form: NgForm) {
-    const { token, error } = await stripe.createToken(this.card);
-
-    if (error) {
-      console.log('Something is wrong:', error);
-    } else {
-      console.log('Success!', token);
-      // ...send the token to the your backend to process the charge
-    }
-  }
-}
-/*
-  public product: Product = new Product();
-
-  constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams,
-    public http: Http
-  ) {
-
-=======
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -97,7 +32,6 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
     private cd: ChangeDetectorRef
   ) {
 
->>>>>>> 84c1653c1736182b1f07da52f264afe942688efb
     if (localStorage.getItem("TOKEN")) {
       
       this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
@@ -111,7 +45,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
           }
         );
     }
-    //this.product = this.navParams.get("productParameter"); //new Product()
+    this.product = this.navParams.get("productParameter"); //new Product()
   }
 
   ngAfterViewInit(): void {
@@ -144,9 +78,9 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
       console.log('Success!', token);
       // ...send the token to the your backend to process the charge
 
-      this.http.post("http://localhost:3000/payments?jwt=" + localStorage.getItem("TOKEN"), {
+      this.http.post("http://localhost:3000/payments/?jwt=" + localStorage.getItem("TOKEN"), {
         stripeToken: token.id,
-        productId: 1
+        menuId: 1
       }).subscribe(
         result => {
           var json = result.json();
@@ -170,11 +104,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
 
     this.navCtrl.push(HistoryPage, {productParameter: this.product});
   }
-<<<<<<< HEAD
-*/
-=======
 
   
 
 }
->>>>>>> 84c1653c1736182b1f07da52f264afe942688efb

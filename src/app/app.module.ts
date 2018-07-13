@@ -4,10 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule, IonicPageModule } from 'ionic
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule} from '@angular/http';
-<<<<<<< HEAD
 import {FormsModule} from '@angular/forms';
-=======
->>>>>>> 84c1653c1736182b1f07da52f264afe942688efb
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -19,13 +16,9 @@ import { ProductPage } from '../pages/product/product';
 import { ProductService } from '../services/product.service';
 import { PaymentPage } from '../pages/payment/payment';
 import { HistoryPage } from '../pages/history/history';
-<<<<<<< HEAD
 import { LocationPage } from '../pages/location/location';
 import { LocationService } from '../services/location.service';
 import { LocationsPage } from '../pages/locations/locations';
-=======
-import { FormsModule } from '@angular/forms';
->>>>>>> 84c1653c1736182b1f07da52f264afe942688efb
 import { AddproductPage } from '../pages/addproduct/addproduct';
 
 @NgModule({
@@ -39,15 +32,10 @@ import { AddproductPage } from '../pages/addproduct/addproduct';
     ProductPage,
     PaymentPage,
     HistoryPage,
-<<<<<<< HEAD
     LocationPage,
     LocationsPage,
     AddproductPage
  ],
-=======
-    AddproductPage
-  ],
->>>>>>> 84c1653c1736182b1f07da52f264afe942688efb
   imports: [
     BrowserModule,
     HttpModule,
@@ -65,11 +53,8 @@ import { AddproductPage } from '../pages/addproduct/addproduct';
     ProductPage,
     PaymentPage,
     HistoryPage,
-<<<<<<< HEAD
     LocationPage,
     LocationsPage,
-=======
->>>>>>> 84c1653c1736182b1f07da52f264afe942688efb
     AddproductPage
   ],
   providers: [

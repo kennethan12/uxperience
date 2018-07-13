@@ -5,10 +5,7 @@ import { RegistrationPage } from '../registration/registration';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { ProductsPage } from '../products/products';
-<<<<<<< HEAD
 import { PaymentPage } from '../payment/payment';
-=======
->>>>>>> 84c1653c1736182b1f07da52f264afe942688efb
 
 @Component({
   selector: 'page-home',
@@ -28,20 +25,12 @@ export class HomePage {
         .subscribe(
           result => {
             console.log(result.json());
-<<<<<<< HEAD
             this.navCtrl.push(ProductsPage);
-=======
->>>>>>> 84c1653c1736182b1f07da52f264afe942688efb
           },
           err => {
             console.log(err); // "Invalid log in"
           }
         );
-<<<<<<< HEAD
-=======
-
-        this.navCtrl.push(ProductsPage);
->>>>>>> 84c1653c1736182b1f07da52f264afe942688efb
     }
   }
 

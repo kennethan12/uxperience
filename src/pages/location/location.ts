@@ -4,6 +4,8 @@ import { Location } from '../models/location';
 import { Product } from '../models/product';
 import { ProductPage } from '../product/product';
 
+import {ProductService} from '../../services/product.service';
+
 /**
  * Generated class for the LocationPage page.
  *
@@ -20,8 +22,12 @@ export class LocationPage {
 
   public location: Location = new Location();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public products: Array<Product>;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, productService: ProductService) {
     this.location = this.navParams.get("locationParameter"); //new Location()
+
+    this.products = productService.getAllProducts();
     
   }
 
@@ -29,9 +35,9 @@ export class LocationPage {
     console.log('ionViewDidLoad LocationPage');
   }
 
-  navigateToProduct() {
+  navigateToProduct(product: Product) {
     this.navCtrl.push(ProductPage, {
-        productParameter: Product
+        productParameter: product
     });
   }
 
