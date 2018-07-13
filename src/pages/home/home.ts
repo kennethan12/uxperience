@@ -20,12 +20,12 @@ export class HomePage {
     public http: Http) {
 
     if (localStorage.getItem("TOKEN")) {
-      this.navCtrl.push(ProductsPage);
 
       this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
         .subscribe(
           result => {
             console.log(result.json());
+            this.navCtrl.push(ProductsPage);
           },
           err => {
             console.log(err); // "Invalid log in"

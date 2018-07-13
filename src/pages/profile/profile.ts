@@ -35,7 +35,8 @@ export class ProfilePage {
   navigateToHome() {
     console.log("Navigating to HomePage...");
 
-    this.navCtrl.push(HomePage);
+    localStorage.removeItem("TOKEN");
+    this.navCtrl.setRoot(HomePage);
   }
 
   navigateToHistory() {

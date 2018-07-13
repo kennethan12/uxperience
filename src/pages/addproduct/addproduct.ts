@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { ProductsPage } from '../products/products';
+import { Time } from '@angular/common';
 
 /**
  * Generated class for the AddproductPage page.
@@ -20,7 +21,8 @@ export class AddproductPage {
   public name: string;
   public description: string;
   public price: string;
-  public date_time: Date;
+  public date: Date;
+  public time: Time;
 
   constructor(
     public navCtrl: NavController, 
@@ -33,7 +35,8 @@ export class AddproductPage {
       name: this.name,
       description: this.description,
       price: this.price,
-      date_time: this.date_time.toString()
+      date: this.date.toString(),
+      time: this.time.toString()
     }).subscribe(
       result => {
         console.log(result);

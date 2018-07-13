@@ -6,10 +6,13 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding style="background-color: aliceblue">
-    <p style="font-size: 20px; text-align: center">Welcome to the fun.</p>
-
-    <ion-list>
+<ion-content padding style="background-color: #f8e9ce">
+        <div text-center>
+            <img width=50px height=50px src="../../assets/imgs/localhostlogo.png">
+        </div>
+        <p style="font-size: 20px; text-align: center">Welcome to the fun.</p>
+        
+        <ion-list>
   
         <ion-item>
             <ion-input [(ngModel)]='firstname' type="text" placeholder="First Name"></ion-input>
@@ -33,6 +36,8 @@
       
     </ion-list>
 
-    <button ion-button (click)="register()">Register</button>
+    <div text-center>
+    <button ion-button color="accent1" (click)="register()">Register</button>
+</div>
 
 </ion-content>
