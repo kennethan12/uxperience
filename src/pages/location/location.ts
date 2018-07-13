@@ -4,6 +4,8 @@ import { Location } from '../models/location';
 import { Product } from '../models/product';
 import { ProductPage } from '../product/product';
 
+import {ProductService} from '../../services/product.service';
+
 /**
  * Generated class for the LocationPage page.
  *
@@ -22,6 +24,8 @@ export class LocationPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.location = this.navParams.get("locationParameter"); //new Location()
+
+    var productService = new ProductService();
     
   }
 

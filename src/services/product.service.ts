@@ -7,7 +7,7 @@ export class ProductService {
 
     private products: Array<Product>;
 
-    constructor(private http: Http) {
+    constructor() {
         this.products = [];
     }
     getAllProducts() {
@@ -91,7 +91,7 @@ export class ProductService {
         this.http.get('url')*/
     }
 
-    
+    /*
     createProduct(productData: Product, callback: Function) {
         this.http.post("http://localhost:3000/addproduct", productData)
             .subscribe(
@@ -103,5 +103,6 @@ export class ProductService {
                 }
             )
     }
+    */
     
 }
