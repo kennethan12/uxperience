@@ -80,7 +80,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
       console.log('Success!', token);
       // ...send the token to the your backend to process the charge
 
-      this.http.post("http://localhost:3000/payments/?jwt=" + localStorage.getItem("TOKEN"), {
+      this.http.post("https://localhost-ix-fs-2-2018.herokuapp.com/payments/?jwt=" + localStorage.getItem("TOKEN"), {
         stripeToken: token.id,
         menuId: this.menu.menu_id
       }).subscribe(

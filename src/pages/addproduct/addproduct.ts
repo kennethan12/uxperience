@@ -35,7 +35,7 @@ export class AddproductPage {
 
     if (localStorage.getItem("TOKEN")) {
 
-      this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
+      this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/verify?jwt=" + localStorage.getItem("TOKEN"))
         .subscribe(
           result => {
             console.log(result.json());
@@ -53,7 +53,7 @@ export class AddproductPage {
 
   addproduct(name: string, description: string, price: number, date: string, time:string) {
 
-    this.http.post('http://localhost:3000/addproduct?jwt='+localStorage.getItem("TOKEN") + '&productName=' + 
+    this.http.post('https://localhost-ix-fs-2-2018.herokuapp.com/addproduct?jwt='+localStorage.getItem("TOKEN") + '&productName=' + 
     
     name + '&productDescription=' + description, {
       // name: this.name,

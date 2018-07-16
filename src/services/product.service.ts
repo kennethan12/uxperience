@@ -17,7 +17,7 @@ export class ProductService {
     getAllProducts(callback) {
         // if (this.products.length) return this.products;
 
-        this.http.get("http://localhost:3000/allproducts")
+        this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/allproducts")
         .subscribe(
             result => {
                 console.log(result);

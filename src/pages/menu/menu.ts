@@ -33,7 +33,7 @@ export class MenuPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
 
-    this.http.get('http://localhost:3000/menuinfo?product_id='+this.product.product_id)
+    this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/menuinfo?product_id='+this.product.product_id)
     .subscribe(
       result => (
         console.log(result),
