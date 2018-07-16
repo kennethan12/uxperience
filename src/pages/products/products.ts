@@ -12,7 +12,15 @@ import { LocationPage } from '../location/location';
 
 @Component({
     selector: 'page-products',
-    templateUrl: 'products.html'
+    templateUrl: 'products.html',
+
+    template: `
+    <ion-tabs>
+      <ion-tab tabIcon="heart" [root]="ProductsPage"></ion-tab>
+      <ion-tab tabIcon="star" [root]="LocationsPage"></ion-tab>
+      <ion-tab tabIcon="circle" [root]="ProfilePage"></ion-tab>
+    </ion-tabs>`
+
 })
 export class ProductsPage {
 
@@ -20,42 +28,58 @@ export class ProductsPage {
 
     public name: string;
 
+
+
+    public tab1: any;
+    public tab2: any;
+    public tab3: any;
+
+
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
         public productService: ProductService,
         public http: Http
     ) {
+
+        if (localStorage.getItem("TOKEN")) {
+
+            this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
+                .subscribe(
+                    result => {
+                        console.log(result.json());
+                    },
+                    err => {
+                        console.log(err); // "Invalid log in"
+                    }
+                );
+        }
+
+
+        this.tab1 = ProductPage;
+        this.tab2 = LocationsPage;
+        this.tab3 = ProfilePage;
+
+
         this.products = [];
         this.products = this.productService.getAllProducts();
 
-        if (localStorage.getItem("TOKEN")) {
-      
-            this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
-              .subscribe(
-                result => {
-                  console.log(result.json());
-                },
-                err => {
-                  console.log(err); // "Invalid log in"
-                }
-              );
-          }
 
     }
-/*
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad ProductsPage');
 
-        this.productService.getAllProducts(
-            (err, data) => {
-                if (err) {
-                    return;
+    /*
+        ionViewDidLoad() {
+            console.log('ionViewDidLoad ProductsPage');
+    
+            this.productService.getAllProducts(
+                (err, data) => {
+                    if (err) {
+                        return;
+                    }
+                    this.products = data;
                 }
-                this.products = data;
-            }
-        );
-    }*/
+            );
+        }*/
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad ProductsPage');
@@ -69,7 +93,7 @@ export class ProductsPage {
             }
         );*/
     }
-    
+
 
     navigateToProduct(product: Product) {
 
