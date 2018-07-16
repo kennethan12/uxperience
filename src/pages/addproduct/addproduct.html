@@ -39,11 +39,11 @@
     </ion-item>
   
     <ion-item>
-      <ion-input [(ngModel)]='time' type="text" placeholder="time"></ion-input>
+      <ion-input [(ngModel)]='time' type="text" placeholder="Time"></ion-input>
     </ion-item>
   
   </ion-list>
 <div text-center>
-<button color='accent1' ion-button (click)="addproduct()">Add Experience</button>
+<button color='accent1' ion-button (click)="addproduct(name, description, price, date, time)">Add Experience</button>
 </div>
 </ion-content>

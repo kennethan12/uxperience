@@ -27,7 +27,6 @@ export class LocationPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, productService: ProductService) {
     this.location = this.navParams.get("locationParameter"); //new Location()
 
-    this.products = productService.getAllProducts();
     
   }
 

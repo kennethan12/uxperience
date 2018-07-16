@@ -4,6 +4,7 @@ import { Product } from '../models/product';
 import { HistoryPage } from '../history/history';
 import { Http } from '@angular/http';
 import { NgForm } from '@angular/forms';
+import { Menu } from '../models/menu';
 
 /**
  * Generated class for the PaymentPage page.
@@ -25,6 +26,8 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
   cardHandler = this.onChange.bind(this);
   error: string;
 
+  public menu: Menu = new Menu;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -38,14 +41,13 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
         .subscribe(
           result => {
             console.log(result.json());
-            this.product = this.navParams.get("productParameter"); //new Product()
+            this.menu = this.navParams.get('menuParameter');
           },
           err => {
             console.log(err); // "Invalid log in"
           }
         );
     }
-    this.product = this.navParams.get("productParameter"); //new Product()
   }
 
   ngAfterViewInit(): void {
@@ -80,7 +82,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
 
       this.http.post("http://localhost:3000/payments/?jwt=" + localStorage.getItem("TOKEN"), {
         stripeToken: token.id,
-        menuId: 1
+        menuId: this.menu.menu_id
       }).subscribe(
         result => {
           var json = result.json();

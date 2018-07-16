@@ -13,14 +13,14 @@
 </ion-header>
 
 <ion-content padding style="background-color: #f8e9ce">
-    <img src="{{product?.image}}" alt="{{product?.name}}" class="center">
+    <!--<img src="{{product?.image}}" alt="{{product?.name}}" class="center">-->
 
     <h1 style="text-align: center; font-size: 20px">{{product?.name}}</h1>
     <div text-center>
         <p style="margin: 0px">Hosted by:
-            <a>{{product?.host}}</a>
+            <a>{{product?.provider_id}}</a>
         </p>
-        <p style="margin: 0px">Price: ${{product?.price}}</p>
+        <!--<p style="margin: 0px">Price: ${{product?.price}}</p>-->
     </div>
 
     <div>
@@ -30,6 +30,6 @@
     </div>
 
     <div text-center>
-        <button ion-button color="dark" round (click)="navigateToPayment()">Sign Up</button>
+        <button ion-button color="dark" round (click)="navigateToMenu()">Sign Up</button>
     </div>
 </ion-content>

@@ -28,11 +28,11 @@
           Near You
       </ion-list-header>
       <ion-item *ngFor="let product of products">
-          <ion-thumbnail item-start>
+         <!-- <ion-thumbnail item-start>
               <img src="{{product.imageThumbnail}}">
-          </ion-thumbnail>
+          </ion-thumbnail>  -->
           <h2>{{product.name}}</h2>
-          <p>{{product.host}} • ${{product.price}}</p>
+          <p>{{product.provider_id}} </p>
           <button ion-button clear item-end color="accent1" (click)="navigateToProduct(product)">View</button>
       </ion-item>
   </ion-list>
