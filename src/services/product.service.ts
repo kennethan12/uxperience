@@ -7,19 +7,33 @@ export class ProductService {
 
     private products: Array<Product>;
 
-    constructor() {
+    constructor(public http: Http) {
         this.products = [];
     }
 
     /*
         callback= function(err, data) {...}
     */
-    getAllProducts() {
+    getAllProducts(callback) {
+        // if (this.products.length) return this.products;
 
+        this.http.get("http://localhost:3000/allproducts")
+        .subscribe(
+            result => {
+                console.log(result);
+                let products = result.json() as Array<Product>
+                callback(null, products);
+            },
+            err => {
+                console.log(err);
+                callback(err);
+            }
+        )
         
-        this.products = [];
 
-        
+        // return this.products;
+
+        /*
         var product1 = new Product();
         product1.host = "Kenneth iX"
         product1.name = "Cape Town Food Tour";

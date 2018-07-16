@@ -18,7 +18,6 @@ export class ProductsPage {
 
     public products: Array<Product>;
 
-    public name: string;
 
     constructor(
         public navCtrl: NavController,
@@ -27,7 +26,6 @@ export class ProductsPage {
         public http: Http
     ) {
         this.products = [];
-        this.products = this.productService.getAllProducts();
 
         if (localStorage.getItem("TOKEN")) {
       
@@ -60,36 +58,22 @@ export class ProductsPage {
     ionViewDidLoad() {
         console.log('ionViewDidLoad ProductsPage');
 
-        /*this.productService.getAllProducts(
-            (err, data) => {
-                if (err) {
-                    return;
-                }
-                this.products = data;
+        this.productService.getAllProducts((err, data) => {
+            if (err) {
+                throw err;
             }
-        );*/
+
+            this.products = data;
+        })
     }
     
 
     navigateToProduct(product: Product) {
 
-        /*this.http.post("http://localhost:3000/access_product",
-            { name: this.name }
-        )
-        .subscribe(
-            result=> {
-                console.log(result.json());
-                this.navCtrl.push(ProductPage, {
-                    productParameter: product
-                });
-            }, err => {
-                console.log(err);
-            }
-        )*/
 
         this.navCtrl.push(ProductPage, {
             productParameter: product
-        });
+        })
     }
 
     navigateToProfile() {

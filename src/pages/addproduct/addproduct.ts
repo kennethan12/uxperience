@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { ProductsPage } from '../products/products';
 import { Time } from '@angular/common';
+import { ProductPage } from '../product/product';
 
 /**
  * Generated class for the AddproductPage page.
@@ -28,21 +29,44 @@ export class AddproductPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public http: Http
-  ) {}
+  ) {
 
-  addproduct() {
-    this.http.post('http://localhost:3000/addproduct', {
-      name: this.name,
-      description: this.description,
-      price: this.price,
-      date: this.date.toString(),
-      time: this.time.toString()
+
+
+    if (localStorage.getItem("TOKEN")) {
+
+      this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
+        .subscribe(
+          result => {
+            console.log(result.json());
+          },
+          err => {
+            console.log(err); // "Invalid log in"
+          }
+        );
+    }
+
+
+
+
+  }
+
+  addproduct(name: string, description: string, price: number, date: string, time:string) {
+
+    this.http.post('http://localhost:3000/addproduct?jwt='+localStorage.getItem("TOKEN") + '&productName=' + 
+    
+    name + '&productDescription=' + description, {
+      // name: this.name,
+      // description: this.description,
+      price: price,
+      date: date.toString(),
+      time: time.toString()
     }).subscribe(
       result => {
         console.log(result.json());
         this.navCtrl.push(ProductsPage, {
           productInfo: result.json()
-        });
+        })
       },
       err => {
         console.log(err);

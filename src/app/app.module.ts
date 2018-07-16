@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule, IonicPageModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, IonicPageModule, Menu } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule} from '@angular/http';
@@ -20,6 +20,7 @@ import { LocationPage } from '../pages/location/location';
 import { LocationService } from '../services/location.service';
 import { LocationsPage } from '../pages/locations/locations';
 import { AddproductPage } from '../pages/addproduct/addproduct';
+import { MenuPage } from '../pages/menu/menu';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AddproductPage } from '../pages/addproduct/addproduct';
     HistoryPage,
     LocationPage,
     LocationsPage,
-    AddproductPage
+    AddproductPage,
+    MenuPage
  ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { AddproductPage } from '../pages/addproduct/addproduct';
     HistoryPage,
     LocationPage,
     LocationsPage,
-    AddproductPage
+    AddproductPage,
+    MenuPage
   ],
   providers: [
     StatusBar,
