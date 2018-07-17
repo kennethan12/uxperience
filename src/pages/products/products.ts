@@ -14,15 +14,8 @@ import { CategoriesPage } from '../categories/categories';
 
 @Component({
     selector: 'page-products',
-<<<<<<< HEAD
     templateUrl: 'products.html'
 
-=======
-    templateUrl: 'products.html',
-    
-    
-    
->>>>>>> bb995446e7da20371b678329b31ca0cf74604313
 })
 export class ProductsPage {
 
