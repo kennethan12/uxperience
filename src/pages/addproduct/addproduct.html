@@ -27,13 +27,28 @@
     <ion-item>
       <ion-input autocorrect='on' [(ngModel)]='name' type="text" placeholder="Experience Name"></ion-input>
     </ion-item>
-  
+
     <ion-item>
       <ion-input autocorrect='on' [(ngModel)]='description' type="text" placeholder="Description of Experience"></ion-input>
     </ion-item>
-  
+
     <ion-item>
       <ion-input [(ngModel)]='price' type="text" placeholder="Price"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>City</ion-label>
+
+      <ion-select [(ngModel)]='city' interface="popover">
+
+        <ion-option value="Arizona"> Arizona </ion-option>
+        <ion-option value="California"> California </ion-option>
+        <ion-option value="New York"> New York </ion-option>
+        <ion-option value="Paris"> Paris </ion-option>
+
+      </ion-select>
+
+
     </ion-item>
   </ion-list>
 
@@ -45,10 +60,12 @@
       <ion-input [(ngModel)]='date[i]' type="text" placeholder='Date'></ion-input>
       <ion-input [(ngModel)]='time[i]' type="text" placeholder='Time'></ion-input>
     </ion-item>
-    <button style='font-size: 13px' color='accent1' ion-button clear (click)='addrow()'>Add</button>
-    <button style='font-size: 13px' color='dark' ion-button clear (click)='deleterow()'>Delete</button>
+
+
+      <button style='font-size: 13px' color='accent1' ion-button clear (click)='addrow()'>Add</button>
+      <button style='font-size: 13px' color='dark' ion-button clear (click)='deleterow()'>Delete</button>
   </ion-list>
   <div text-center>
-    <button color='accent1' ion-button (click)="addproduct(name, description)">Add Experience</button>
+    <button color='accent1' ion-button (click)="addproduct(name, description, city)">Add Experience</button>
   </div>
 </ion-content>

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LocationPage } from '../location/location';
+import { Location } from '../models/location'
+import { LocationService } from '../../services/location.service';
 
 /**
  * Generated class for the LocationsPage page.
@@ -16,17 +18,41 @@ import { LocationPage } from '../location/location';
 })
 export class LocationsPage {
 
+  public locationService: LocationService;
+  public locations: Array<Location>;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    this.locations = [];
+
+    this.locationService = new LocationService();
+
+
+    this.locations = this.locationService.getAllLocations();
+
+
+
   }
+
+
+
+
+
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LocationsPage');
+
+
+
+
+
   }
 
-  navigateToLocation() {
+  navigateToLocation(location:Location) {
     console.log("Navigating to LocationPage...");
 
-    this.navCtrl.push(LocationPage);
-}
+    
+
+    this.navCtrl.push(LocationPage, {locationparameter : location.name});
+  }
 
 }
