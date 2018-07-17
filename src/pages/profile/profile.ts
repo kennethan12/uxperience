@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { HistoryPage } from '../history/history';
 import { Http } from '@angular/http';
+import { MyexperiencesPage } from '../myexperiences/myexperiences';
+ 
 
 
 @Component({
@@ -43,5 +45,12 @@ export class ProfilePage {
     console.log("Navigating to HistoryPage...");
 
     this.navCtrl.push(HistoryPage);
+
   }
+  navigateToExperiences() {
+    console.log("Navigating to ExperiencesPage...");
+
+    this.navCtrl.push(MyexperiencesPage);
+
+}
 }

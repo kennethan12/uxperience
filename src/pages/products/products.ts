@@ -8,15 +8,22 @@ import { Http } from '@angular/http';
 import { AddproductPage } from '../addproduct/addproduct';
 import { LocationsPage } from '../locations/locations';
 import { LocationPage } from '../location/location';
+import { CategoriesPage } from '../categories/categories';
 
 
 @Component({
     selector: 'page-products',
-    templateUrl: 'products.html'
+    templateUrl: 'products.html',
+    
+    
+    
 })
 export class ProductsPage {
 
     public products: Array<Product>;
+    
+
+   
 
 
     constructor(
@@ -39,7 +46,6 @@ export class ProductsPage {
                 }
               );
           }
-
     }
 /*
     ionViewDidLoad() {
@@ -93,4 +99,11 @@ export class ProductsPage {
 
         this.navCtrl.push(LocationsPage);
     }
+
+  
 }
+
+
+
+
+
