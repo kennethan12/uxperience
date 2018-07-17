@@ -8,6 +8,7 @@ import { Http } from '@angular/http';
 import { AddproductPage } from '../addproduct/addproduct';
 import { LocationsPage } from '../locations/locations';
 import { LocationPage } from '../location/location';
+import { User } from '../models/user';
 
 
 @Component({
@@ -25,7 +26,7 @@ import { LocationPage } from '../location/location';
 export class ProductsPage {
 
     public products: Array<Product>;
-
+    public user: User = new User();
 
 
 
@@ -86,7 +87,6 @@ export class ProductsPage {
             if (err) {
                 throw err;
             }
-
             this.products = data;
         })
     }
@@ -96,7 +96,7 @@ export class ProductsPage {
 
 
         this.navCtrl.push(ProductPage, {
-            productParameter: product
+            productParameter: product,
         })
     }
 

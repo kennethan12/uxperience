@@ -22,8 +22,11 @@ export class AddproductPage {
   public name: string;
   public description: string;
   public price: string;
-  public date: Date;
-  public time: Time;
+  public date: string[] = [];
+  public time: string[] = [];
+
+  public row: any
+  public rows: Array<{}> = [];
 
   constructor(
     public navCtrl: NavController, 
@@ -45,30 +48,41 @@ export class AddproductPage {
           }
         );
     }
-
-
-
-
   }
 
-  addproduct(name: string, description: string, price: number, date: string, time:string) {
+  addrow(): void {
+    this.rows.push(this.row);
+  }
 
-    this.http.post('http://localhost:3000/addproduct?jwt='+localStorage.getItem("TOKEN") + '&productName=' + 
-    
-    name + '&productDescription=' + description, {
-      // name: this.name,
-      // description: this.description,
-      price: price,
-      date: date.toString(),
-      time: time.toString()
+  deleterow(): void {
+    this.rows.pop();
+  }
+
+  addproduct(name: string, description: string) {
+
+    this.http.post('http://localhost:3000/addproduct?jwt='+localStorage.getItem("TOKEN"), {
+      name: name,
+      description: description
     }).subscribe(
       result => {
         console.log(result.json());
-        this.navCtrl.push(ProductsPage, {
-          productInfo: result.json()
-        })
-      },
-      err => {
+        let productInfo = result.json()
+        for (let i = 0; i < this.date.length; i++) {
+
+          this.http.post('http://localhost:3000/addmenu?product_id='+productInfo.product_id, {
+            price: this.price,
+            date: this.date[i],
+            time: this.time[i]
+          }).subscribe(
+            result => {
+              console.log(result.json());
+            }, err => {
+              console.log(err);
+            }
+          )
+        }
+        this.navCtrl.push(ProductsPage, productInfo)
+      }, err => {
         console.log(err);
       }
     )

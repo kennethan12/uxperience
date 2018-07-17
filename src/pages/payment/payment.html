@@ -11,7 +11,8 @@
   <div text-center>
     <h2 style="font-size: 15px; margin-bottom: 0px">Sign up for</h2>
     <h1 style="font-size: 20px; margin-top: 0px">{{product?.name}}</h1>
-    ${{product?.price}}
+    <p>Price: ${{menu?.price}}</p>
+    {{menu?.date}}, {{menu?.time}}
   </div>
 
   <p></p>
@@ -26,7 +27,7 @@
       <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
     </div>
 
-    <button type="submit">Pay $777</button>
+    <button type="submit">Pay ${{menu?.price}}</button>
   </form>
 
 </ion-content>

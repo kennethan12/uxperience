@@ -27,6 +27,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
   error: string;
 
   public menu: Menu = new Menu;
+  public product: Product = new Product();
 
   constructor(
     public navCtrl: NavController, 
@@ -34,6 +35,9 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
     public http: Http,
     private cd: ChangeDetectorRef
   ) {
+
+    this.menu = this.navParams.get("menuParameter");
+    this.product = this.navParams.get("productParameter");
 
     if (localStorage.getItem("TOKEN")) {
       
@@ -96,9 +100,26 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
     }
   }
 
-  public product: Product = new Product();
   ionViewDidLoad() {
     console.log('ionViewDidLoad PaymentPage');
+
+    this.http.get("http://localhost:3000/productinfo?product_id="+this.product.product_id
+    ).subscribe(
+      result => {
+        console.log(result)
+      }, err => {
+        console.log(err);
+      }
+    )
+
+    this.http.get("http://localhost:3000/menuinfo?menu_id="+this.menu.menu_id
+    ).subscribe(
+      result => {
+        console.log(result)
+      }, err => {
+        console.log(err)
+      }
+    )
   }
 
   navigateToHistory() {
