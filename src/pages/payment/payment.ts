@@ -27,6 +27,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
   error: string;
 
   public menu: Menu = new Menu;
+  public product: Product = new Product();
 
   constructor(
     public navCtrl: NavController, 
@@ -34,6 +35,9 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
     public http: Http,
     private cd: ChangeDetectorRef
   ) {
+
+    this.menu = this.navParams.get("menuParameter");
+    this.product = this.navParams.get("productParameter");
 
     if (localStorage.getItem("TOKEN")) {
       
@@ -80,7 +84,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
       console.log('Success!', token);
       // ...send the token to the your backend to process the charge
 
-      this.http.post("https://localhost-ix-fs-2-2018.herokuapp.com/payments/?jwt=" + localStorage.getItem("TOKEN"), {
+      this.http.post("http://localhost:3000/payments/?jwt=" + localStorage.getItem("TOKEN"), {
         stripeToken: token.id,
         menuId: this.menu.menu_id
       }).subscribe(
@@ -96,9 +100,26 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
     }
   }
 
-  public product: Product = new Product();
   ionViewDidLoad() {
     console.log('ionViewDidLoad PaymentPage');
+
+    this.http.get("http://localhost:3000/productinfo?product_id="+this.product.product_id
+    ).subscribe(
+      result => {
+        console.log(result)
+      }, err => {
+        console.log(err);
+      }
+    )
+
+    this.http.get("http://localhost:3000/menuinfo?menu_id="+this.menu.menu_id
+    ).subscribe(
+      result => {
+        console.log(result)
+      }, err => {
+        console.log(err)
+      }
+    )
   }
 
   navigateToHistory() {

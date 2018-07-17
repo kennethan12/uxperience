@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>menu</ion-title>
+    <ion-title>Dates and Times</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,14 +17,14 @@
 
   <ion-list>
     <ion-list-header>
-        wtf
+        Available
     </ion-list-header>
     <ion-item *ngFor="let menu of menuItems">
         <!--<ion-thumbnail item-start>
             <img src="{{product.imageThumbnail}}">
         </ion-thumbnail>-->
         <p>{{menu.date}} • {{menu.time}} • ${{menu.price}}</p>
-        <button ion-button clear item-end color="accent1" (click)="navigateToPayment">View</button>
+        <button ion-button clear item-end color="accent1" (click)="navigateToPayment(menu)">Sign Up</button>
     </ion-item>
 </ion-list>
 </ion-content>

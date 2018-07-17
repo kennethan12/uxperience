@@ -33,7 +33,7 @@ export class MenuPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
 
-    this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/menuinfo?product_id='+this.product.product_id)
+    this.http.get('http://localhost:3000/allmenuinfo?product_id='+this.product.product_id)
     .subscribe(
       result => (
         console.log(result),
@@ -42,12 +42,16 @@ export class MenuPage {
         console.log(err)
       )
     )
+    
   }
 
-  navigateToPayment() {
+  navigateToPayment(menu: Menu) {
     console.log("Navigating to PaymentPage...");
 
-    this.navCtrl.push(PaymentPage, { menuParameter: this.menu });
+    this.navCtrl.push(PaymentPage, { 
+      menuParameter: menu,
+      productParameter: this.product
+    });
   }
 
 }

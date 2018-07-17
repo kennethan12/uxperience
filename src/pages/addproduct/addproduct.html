@@ -15,35 +15,40 @@
 
 <ion-content padding style="background-color: #f8e9ce">
 
-    <div text-center>
-        <img width=50px height=50px src="../../assets/imgs/localhostlogo.png">
-      </div>
+  <div text-center>
+    <img width=50px height=50px src="../../assets/imgs/localhostlogo.png">
+  </div>
 
-      <p style="font-size: 20px; text-align: center">Share your experience.</p>
+  <p style="font-size: 20px; text-align: center">Share your experience.</p>
   <ion-list>
-  
+    <ion-list-header>
+      Product details
+    </ion-list-header>
     <ion-item>
-      <ion-input [(ngModel)]='name' type="text" placeholder="Experience Name"></ion-input>
+      <ion-input autocorrect='on' [(ngModel)]='name' type="text" placeholder="Experience Name"></ion-input>
     </ion-item>
   
     <ion-item>
-      <ion-input [(ngModel)]='description' type="text" placeholder="Description of Experience"></ion-input>
+      <ion-input autocorrect='on' [(ngModel)]='description' type="text" placeholder="Description of Experience"></ion-input>
     </ion-item>
   
     <ion-item>
       <ion-input [(ngModel)]='price' type="text" placeholder="Price"></ion-input>
     </ion-item>
-  
-    <ion-item>
-      <ion-input [(ngModel)]='date' type="text" placeholder="Date"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-input [(ngModel)]='time' type="text" placeholder="Time"></ion-input>
-    </ion-item>
-  
   </ion-list>
-<div text-center>
-<button color='accent1' ion-button (click)="addproduct(name, description, price, date, time)">Add Experience</button>
-</div>
+
+  <ion-list>
+    <ion-list-header>
+      Add dates and times
+    </ion-list-header>
+    <ion-item *ngFor="let row of rows; let i=index">
+      <ion-input [(ngModel)]='date[i]' type="text" placeholder='Date'></ion-input>
+      <ion-input [(ngModel)]='time[i]' type="text" placeholder='Time'></ion-input>
+    </ion-item>
+    <button style='font-size: 13px' color='accent1' ion-button clear (click)='addrow()'>Add</button>
+    <button style='font-size: 13px' color='dark' ion-button clear (click)='deleterow()'>Delete</button>
+  </ion-list>
+  <div text-center>
+    <button color='accent1' ion-button (click)="addproduct(name, description)">Add Experience</button>
+  </div>
 </ion-content>

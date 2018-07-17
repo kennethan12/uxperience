@@ -39,13 +39,11 @@
     </div>
 
     <div text-center>
-        <h1 style="margin-top: 10px">Name</h1>
+        <h1 style="margin-top: 10px">{{user.firstname}} {{user.lastname}}</h1>
         <p>Age • Gender</p>
     </div>
     <div text-center>
-            <button ion-button clear color='dark' (click)="navigateToHistory()">Your Payment History</button>
-        </div> 
-    <div text-center>
+        <button ion-button clear color='dark' (click)="navigateToHistory()">Your Payment History</button>
         <button ion-button clear color='accent1' (click)="navigateToHome()">Log out</button>
     </div> 
 </ion-content>

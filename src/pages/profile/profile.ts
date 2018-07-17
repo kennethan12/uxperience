@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { HistoryPage } from '../history/history';
 import { Http } from '@angular/http';
-
+import { User } from '../models/user';
 
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html'
 })
 export class ProfilePage {
+
+  public user: User = new User();
 
   constructor(
     public navCtrl: NavController,
@@ -19,7 +21,7 @@ export class ProfilePage {
 
     if (localStorage.getItem("TOKEN")) {
 
-      this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/verify?jwt=" + localStorage.getItem("TOKEN"))
+      this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
         .subscribe(
           result => {
             console.log(result.json());
@@ -29,6 +31,21 @@ export class ProfilePage {
           }
         );
     }
+
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ProfilePage');
+
+    this.http.get("http://localhost:3000/user?jwt="+localStorage.getItem("TOKEN")
+    ).subscribe(
+      result => {
+        console.log(result);
+        this.user = result.json();
+      }, err => {
+        console.log(err)
+      }
+    )
 
   }
   
