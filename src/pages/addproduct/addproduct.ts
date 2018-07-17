@@ -51,11 +51,11 @@ export class AddproductPage {
 
   }
 
-  addproduct(name: string, description: string, price: number, date: string, time:string) {
+  addproduct(name: string, description: string, price: number, city: string, date: string, time:string) {
 
     this.http.post('http://localhost:3000/addproduct?jwt='+localStorage.getItem("TOKEN") + '&productName=' + 
     
-    name + '&productDescription=' + description, {
+    name + '&productDescription=' + description + '&city=' + city, {
       // name: this.name,
       // description: this.description,
       price: price,

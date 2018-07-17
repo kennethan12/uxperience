@@ -36,7 +36,7 @@ export class ProductPage {
 
   navigateToMenu() {
     console.log("Navigating to MenuPage...");
-    this.navCtrl.push(MenuPage, { productParameter: this.product });
+    this.navCtrl.push(MenuPage, {productParameter: this.product});
   }
 
 }

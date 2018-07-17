@@ -35,6 +35,21 @@
     </ion-item>
   
     <ion-item>
+      <ion-label>City</ion-label>
+    
+      <ion-select [(ngModel)]='city' interface="popover">
+    
+        <ion-option value="Arizona"> Arizona </ion-option>
+        <ion-option value="California"> California </ion-option>
+        <ion-option value="New York"> New York </ion-option>
+        <ion-option value="Paris"> Paris </ion-option>
+    
+      </ion-select>
+    
+    
+    </ion-item>
+
+    <ion-item>
       <ion-input [(ngModel)]='date' type="text" placeholder="Date"></ion-input>
     </ion-item>
   
@@ -44,6 +59,6 @@
   
   </ion-list>
 <div text-center>
-<button color='accent1' ion-button (click)="addproduct(name, description, price, date, time)">Add Experience</button>
+<button color='accent1' ion-button (click)="addproduct(name, description, price, city, date, time)">Add Experience</button>
 </div>
 </ion-content>

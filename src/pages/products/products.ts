@@ -12,14 +12,7 @@ import { LocationPage } from '../location/location';
 
 @Component({
     selector: 'page-products',
-    templateUrl: 'products.html',
-
-    template: `
-    <ion-tabs>
-      <ion-tab tabIcon="heart" [root]="ProductsPage"></ion-tab>
-      <ion-tab tabIcon="star" [root]="LocationsPage"></ion-tab>
-      <ion-tab tabIcon="circle" [root]="ProfilePage"></ion-tab>
-    </ion-tabs>`
+    templateUrl: 'products.html'
 
 })
 export class ProductsPage {
@@ -29,9 +22,6 @@ export class ProductsPage {
 
 
 
-    public tab1: any;
-    public tab2: any;
-    public tab3: any;
 
 
     constructor(
@@ -56,28 +46,8 @@ export class ProductsPage {
         }
 
 
-        this.tab1 = ProductPage;
-        this.tab2 = LocationsPage;
-        this.tab3 = ProfilePage;
-
-
-
-
     }
 
-    /*
-        ionViewDidLoad() {
-            console.log('ionViewDidLoad ProductsPage');
-    
-            this.productService.getAllProducts(
-                (err, data) => {
-                    if (err) {
-                        return;
-                    }
-                    this.products = data;
-                }
-            );
-        }*/
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad ProductsPage');
