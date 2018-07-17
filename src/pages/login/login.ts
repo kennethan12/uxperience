@@ -4,6 +4,7 @@ import { ProfilePage } from '../profile/profile';
 import { RegistrationPage } from '../registration/registration';
 import { ProductsPage } from '../products/products';
 import { Http } from '@angular/http';
+import { TabsPage } from '../tabs/tabs';
 
 
 @Component({
@@ -33,8 +34,8 @@ export class LoginPage {
         var token = jwtResponse.token;
 
         localStorage.setItem("TOKEN", token);
-
-        this.navCtrl.push(ProductsPage);
+        this.navCtrl.setRoot(TabsPage);
+        // this.navCtrl.push(ProductsPage);
       },
       err => {
         console.log(err);

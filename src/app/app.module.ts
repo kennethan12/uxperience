@@ -21,6 +21,12 @@ import { LocationService } from '../services/location.service';
 import { LocationsPage } from '../pages/locations/locations';
 import { AddproductPage } from '../pages/addproduct/addproduct';
 import { MenuPage } from '../pages/menu/menu';
+import { CategoriesPage } from '../pages/categories/categories';
+import { TabsPage } from '../pages/tabs/tabs';
+import { CategoryPage } from '../pages/category/category';
+import { ReviewsPage } from '../pages/reviews/reviews';
+import { ReviewService } from '../services/reviews.service';
+import { MyexperiencesPage } from '../pages/myexperiences/myexperiences';
 
 @NgModule({
   declarations: [
@@ -36,7 +42,12 @@ import { MenuPage } from '../pages/menu/menu';
     LocationPage,
     LocationsPage,
     AddproductPage,
-    MenuPage
+    MenuPage,
+    MyexperiencesPage,
+    CategoriesPage,
+    TabsPage,
+    CategoryPage,
+    ReviewsPage
  ],
   imports: [
     BrowserModule,
@@ -58,13 +69,19 @@ import { MenuPage } from '../pages/menu/menu';
     LocationPage,
     LocationsPage,
     AddproductPage,
-    MenuPage
+    MenuPage,
+    MyexperiencesPage,
+    CategoriesPage,
+    TabsPage,
+    CategoryPage,
+    ReviewsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     ProductService,
     LocationService,
+    ReviewService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
