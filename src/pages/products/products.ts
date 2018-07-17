@@ -9,11 +9,15 @@ import { AddproductPage } from '../addproduct/addproduct';
 import { LocationsPage } from '../locations/locations';
 import { LocationPage } from '../location/location';
 import { User } from '../models/user';
+import { CategoriesPage } from '../categories/categories';
 
 
 @Component({
     selector: 'page-products',
-    templateUrl: 'products.html'
+    templateUrl: 'products.html',
+    
+    
+    
 })
 export class ProductsPage {
 
@@ -40,7 +44,6 @@ export class ProductsPage {
                 }
               );
           }
-
     }
 /*
     ionViewDidLoad() {
@@ -93,4 +96,11 @@ export class ProductsPage {
 
         this.navCtrl.push(LocationsPage);
     }
+
+  
 }
+
+
+
+
+

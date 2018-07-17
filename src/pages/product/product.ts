@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Product } from '../models/product';
 import { PaymentPage } from '../payment/payment';
@@ -13,6 +13,7 @@ import { User } from '../models/user';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+declare var google;
 
 @IonicPage()
 @Component({
@@ -20,6 +21,13 @@ import { User } from '../models/user';
   templateUrl: 'product.html',
 })
 export class ProductPage {
+
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
+  start = 'chicago, il';
+  end = 'chicago, il';
+  directionsService = new google.maps.DirectionsService;
+  directionsDisplay = new google.maps.DirectionsRenderer;
 
   public product: Product = new Product();
   public user: User = new User();
@@ -31,7 +39,7 @@ export class ProductPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductPage');
-
+    this.initMap();
     this.http.get('http://localhost:3000/producthost?provider_id='+this.product.provider_id
     ).subscribe(
       result => {
@@ -41,11 +49,30 @@ export class ProductPage {
         console.log(err);
       }
     )
-
-
-
-
   }
+  initMap() {
+    this.map = new google.maps.Map(this.mapElement.nativeElement, {
+      zoom: 7,
+      center: {lat: 41.85, lng: -87.65}
+    });
+
+    this.directionsDisplay.setMap(this.map);
+  }
+
+  calculateAndDisplayRoute() {
+    this.directionsService.route({
+      origin: this.start,
+      destination: this.end,
+      travelMode: 'DRIVING'
+    }, (response, status) => {
+      if (status === 'OK') {
+        this.directionsDisplay.setDirections(response);
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
+  }
+
 
   navigateToMenu() {
     console.log("Navigating to MenuPage...");

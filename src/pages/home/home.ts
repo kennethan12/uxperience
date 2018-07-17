@@ -26,6 +26,7 @@ export class HomePage {
           result => {
             console.log(result.json());
             this.navCtrl.push(ProductsPage);
+            
           },
           err => {
             console.log(err); // "Invalid log in"
