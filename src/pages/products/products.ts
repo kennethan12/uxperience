@@ -9,16 +9,22 @@ import { AddproductPage } from '../addproduct/addproduct';
 import { LocationsPage } from '../locations/locations';
 import { LocationPage } from '../location/location';
 import { User } from '../models/user';
+import { CategoriesPage } from '../categories/categories';
 
 
 @Component({
     selector: 'page-products',
     templateUrl: 'products.html'
+
 })
 export class ProductsPage {
 
     public products: Array<Product>;
     public user: User = new User();
+
+
+
+
 
     constructor(
         public navCtrl: NavController,
@@ -29,32 +35,21 @@ export class ProductsPage {
         this.products = [];
 
         if (localStorage.getItem("TOKEN")) {
-      
+
             this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
-              .subscribe(
-                result => {
-                  console.log(result.json());
-                },
-                err => {
-                  console.log(err); // "Invalid log in"
-                }
-              );
-          }
+                .subscribe(
+                    result => {
+                        console.log(result.json());
+                    },
+                    err => {
+                        console.log(err); // "Invalid log in"
+                    }
+                );
+        }
+
 
     }
-/*
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad ProductsPage');
 
-        this.productService.getAllProducts(
-            (err, data) => {
-                if (err) {
-                    return;
-                }
-                this.products = data;
-            }
-        );
-    }*/
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad ProductsPage');
@@ -66,7 +61,7 @@ export class ProductsPage {
             this.products = data;
         })
     }
-    
+
 
     navigateToProduct(product: Product) {
 
@@ -93,4 +88,11 @@ export class ProductsPage {
 
         this.navCtrl.push(LocationsPage);
     }
+
+  
 }
+
+
+
+
+

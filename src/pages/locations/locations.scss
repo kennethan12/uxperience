@@ -5,10 +5,12 @@ page-locations {
         ion-card {
           position: relative;
           text-align: center;
+          margin: 10px;
 
-          padding: 20px;
+        
+         padding: 20px; 
         }
-      
+
         .card-title {
           position: absolute;
           top: 36%;
@@ -26,5 +28,12 @@ page-locations {
           color: #fff;
         }
       
+
+        }
       }
-}
+
+    
+      
+
+    
+  

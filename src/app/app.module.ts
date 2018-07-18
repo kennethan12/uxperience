@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule, IonicPageModule, Menu } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
+
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -21,6 +23,13 @@ import { LocationService } from '../services/location.service';
 import { LocationsPage } from '../pages/locations/locations';
 import { AddproductPage } from '../pages/addproduct/addproduct';
 import { MenuPage } from '../pages/menu/menu';
+import { CategoriesPage } from '../pages/categories/categories';
+import { TabsPage } from '../pages/tabs/tabs';
+import { CategoryPage } from '../pages/category/category';
+import { ReviewsPage } from '../pages/reviews/reviews';
+import { ReviewService } from '../services/reviews.service';
+import { MyexperiencesPage } from '../pages/myexperiences/myexperiences';
+
 
 @NgModule({
   declarations: [
@@ -36,13 +45,20 @@ import { MenuPage } from '../pages/menu/menu';
     LocationPage,
     LocationsPage,
     AddproductPage,
-    MenuPage
+    MenuPage,
+    MyexperiencesPage,
+    CategoriesPage,
+    TabsPage,
+    CategoryPage,
+    ReviewsPage
  ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    FormsModule
+    FormsModule,
+    
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -58,13 +74,20 @@ import { MenuPage } from '../pages/menu/menu';
     LocationPage,
     LocationsPage,
     AddproductPage,
-    MenuPage
+    MenuPage,
+    MyexperiencesPage,
+    CategoriesPage,
+    TabsPage,
+    CategoryPage,
+    ReviewsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     ProductService,
     LocationService,
+    ReviewService,
+
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Product } from '../models/product';
 import { PaymentPage } from '../payment/payment';
 import { ProductService } from '../../services/product.service';
 import { MenuPage } from '../menu/menu';
-import { Http } from '@angular/http';
-import { User } from '../models/user';
 
 /**
  * Generated class for the ProductPage page.
@@ -13,6 +11,7 @@ import { User } from '../models/user';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+declare var google;
 
 @IonicPage()
 @Component({
@@ -21,31 +20,47 @@ import { User } from '../models/user';
 })
 export class ProductPage {
 
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
+  start = 'chicago, il';
+  end = 'chicago, il';
+  directionsService = new google.maps.DirectionsService;
+  directionsDisplay = new google.maps.DirectionsRenderer;
+
   public product: Product = new Product();
-  public user: User = new User();
   public productService: ProductService;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.product = this.navParams.get("productParameter"); //new Product()
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductPage');
-
-    this.http.get('http://localhost:3000/producthost?provider_id='+this.product.provider_id
-    ).subscribe(
-      result => {
-        console.log(result);
-        this.user = result.json();
-      }, err => {
-        console.log(err);
-      }
-    )
-
-
-
-
+    this.initMap();
   }
+  initMap() {
+    this.map = new google.maps.Map(this.mapElement.nativeElement, {
+      zoom: 7,
+      center: {lat: 41.85, lng: -87.65}
+    });
+
+    this.directionsDisplay.setMap(this.map);
+  }
+
+  calculateAndDisplayRoute() {
+    this.directionsService.route({
+      origin: this.start,
+      destination: this.end,
+      travelMode: 'DRIVING'
+    }, (response, status) => {
+      if (status === 'OK') {
+        this.directionsDisplay.setDirections(response);
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
+  }
+
 
   navigateToMenu() {
     console.log("Navigating to MenuPage...");

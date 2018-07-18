@@ -20,13 +20,25 @@ import {ProductService} from '../../services/product.service';
 })
 export class LocationPage {
 
-  public location: Location = new Location();
 
   public products: Array<Product>;
+  public productService: ProductService;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, productService: ProductService) {
-    this.location = this.navParams.get("locationParameter"); //new Location()
+    let locationName: string = this.navParams.get("locationparameter"); //new Location()
 
+
+    productService.getProductByCity(locationName, (err, result)=>{
+
+      if(err){
+
+        console.log("error!!! cant get product by city")
+      }
+
+      this.products = result.json();
+      console.log(this.products.length);
+
+    });
     
   }
 
