@@ -26,7 +26,7 @@
         <ion-card type="button" *ngFor="let location of locations" (click)="navigateToLocation(location)" >
           <img src={{location.image}}/>
           <div class="card-title">{{location.name}}</div>
-          <div class="card-subtitle">41 Listings</div>
+          <div class="card-subtitle">{{locations.length}} Listings</div>
         </ion-card>
     
 

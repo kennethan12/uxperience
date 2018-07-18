@@ -23,12 +23,13 @@ export class LocationPage {
 
   public products: Array<Product>;
   public productService: ProductService;
+  public location: Location = new Location();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, productService: ProductService) {
-    let locationName: string = this.navParams.get("locationparameter"); //new Location()
+    this.location = this.navParams.get("locationParameter"); //new Location()
 
 
-    productService.getProductByCity(locationName, (err, result)=>{
+    productService.getProductByCity(this.location.name, (err, result)=>{
 
       if(err){
 

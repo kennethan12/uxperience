@@ -52,7 +52,7 @@ export class LocationsPage {
 
     
 
-    this.navCtrl.push(LocationPage, {locationparameter : location.name});
+    this.navCtrl.push(LocationPage, {locationParameter : location});
   }
 
 }

@@ -131,7 +131,9 @@ export class AddproductPage {
 
   addproduct() {
 
-    console.log('DOWNLOAD URL CHECK 1 = ' + this.downloadURL);
+    if (this.downloadURL === null) {
+      this.downloadURL = "../../assets/imgs/localhostlogo.png"
+    }
 
     this.http.post('http://localhost:3000/addcategory', {
       name: this.category
