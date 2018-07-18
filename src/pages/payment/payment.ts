@@ -5,6 +5,7 @@ import { HistoryPage } from '../history/history';
 import { Http } from '@angular/http';
 import { NgForm } from '@angular/forms';
 import { Menu } from '../models/menu';
+import { PaymentconfirmPage } from '../paymentconfirm/paymentconfirm';
 
 /**
  * Generated class for the PaymentPage page.
@@ -76,21 +77,30 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
   }
 
   async onSubmit(form: NgForm) {
-    const { token, error } = await stripe.createToken(this.card);
-
+    const result = await stripe.createSource(this.card);
+    // console.log(token);
+    // console.log('@@@@@@');
+    // console.log(error);
+    let error = result.error;
+    let source = result.source;
     if (error) {
       console.log('Something is wrong:', error);
     } else {
-      console.log('Success!', token);
+      console.log('Success!', source);
       // ...send the token to the your backend to process the charge
 
-      this.http.post("http://localhost:3000/payments/?jwt=" + localStorage.getItem("TOKEN"), {
-        stripeToken: token.id,
+      this.http.post("http://localhost:3000/payments/?jwt=" + localStorage.getItem("TOKEN") + "&menu_id=" + this.menu.menu_id, {
+        stripeToken: source,
         menuId: this.menu.menu_id
       }).subscribe(
         result => {
-          var json = result.json();
-          // json.id;
+          var paymentConfirm = result.json();
+          console.log(paymentConfirm)
+          this.navCtrl.push(PaymentconfirmPage, {
+            productParameter: this.product,
+            menuParameter: this.menu,
+            paymentConfirm
+          });
         },
 
         err => {
@@ -126,6 +136,15 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
     console.log("Navigating to HistoryPage...");
 
     this.navCtrl.push(HistoryPage, {productParameter: this.product});
+  }
+
+  navigateToPaymentConfirm() {
+    console.log("Navigating to PaymentconfirmPage");
+
+    this.navCtrl.push(PaymentconfirmPage, {
+      productParameter: this.product,
+      menuParameter: this.menu
+    });
   }
 
   

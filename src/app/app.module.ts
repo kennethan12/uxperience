@@ -27,6 +27,8 @@ import { CategoryPage } from '../pages/category/category';
 import { ReviewsPage } from '../pages/reviews/reviews';
 import { ReviewService } from '../services/reviews.service';
 import { MyexperiencesPage } from '../pages/myexperiences/myexperiences';
+import { SettingsPage } from '../pages/settings/settings';
+import { PaymentconfirmPage } from '../pages/paymentconfirm/paymentconfirm';
 
 @NgModule({
   declarations: [
@@ -47,12 +49,16 @@ import { MyexperiencesPage } from '../pages/myexperiences/myexperiences';
     CategoriesPage,
     TabsPage,
     CategoryPage,
-    ReviewsPage
+    ReviewsPage,
+    SettingsPage,
+    PaymentconfirmPage
  ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      tabsHideOnSubPages: true,
+    }),
     FormsModule
   ],
   bootstrap: [IonicApp],
@@ -74,7 +80,9 @@ import { MyexperiencesPage } from '../pages/myexperiences/myexperiences';
     CategoriesPage,
     TabsPage,
     CategoryPage,
-    ReviewsPage
+    ReviewsPage,
+    SettingsPage,
+    PaymentconfirmPage
   ],
   providers: [
     StatusBar,

@@ -45,19 +45,7 @@ export class ProductsPage {
               );
           }
     }
-/*
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad ProductsPage');
 
-        this.productService.getAllProducts(
-            (err, data) => {
-                if (err) {
-                    return;
-                }
-                this.products = data;
-            }
-        );
-    }*/
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad ProductsPage');

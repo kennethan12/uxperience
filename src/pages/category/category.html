@@ -1,32 +1,24 @@
 <ion-header>
 
-        <ion-navbar>
-          <ion-title>Category</ion-title>
-        </ion-navbar>
-      
-      </ion-header>
-      
-      
-      <ion-content padding>
-      
-        <ion-list>
-          <ion-item type="button" (click)="navigateToFood">
-            <ion-icon name="leaf" item-start></ion-icon>
-            Food
-          </ion-item>
-          <ion-item type="button" (click)="navigateToMuseums">
-              <ion-icon name="leaf" item-start></ion-icon>
-              Museums
-            </ion-item>
-          <ion-item type="button" (click)="navigateToSports">
-            <ion-icon name="leaf" item-start></ion-icon>
-            Sports
-          </ion-item>
-          <ion-item type="button" (click)="navigateToOutdoorTours">
-            <ion-icon name="leaf" item-start></ion-icon>
-            Outdoor Tours
-          </ion-item>
-        </ion-list>
-      
-      
-      </ion-content>
+  <ion-navbar>
+    <ion-title>{{category?.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-list-header>
+      {{category?.name}}
+    </ion-list-header>
+    <ion-item *ngFor="let product of products" (click)="navigateToProduct(product)">
+      <h2>{{product.name}}</h2>
+      <p>{{product.description}}</p>
+      <button ion-button clear item-end color="accent1">View</button>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>

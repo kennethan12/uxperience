@@ -14,23 +14,15 @@
        
        
        <ion-content padding>
+
+          <div text-center>
+              <img width=50px height=50px src="../../assets/imgs/localhostlogo.png">
+            </div>
        
-        <ion-list>
-          <ion-item type="button" (click)="navigateToFood">
+        <ion-list style="margin-top: 10px">
+          <ion-item type="button" (click)="navigateToCategory(category)" *ngFor="let category of categories">
             <ion-icon name="leaf" item-start></ion-icon>
-            Food
-          </ion-item>
-          <ion-item type="button" (click)="navigateToMuseums">
-              <ion-icon name="leaf" item-start></ion-icon>
-              Museums
-            </ion-item>
-          <ion-item type="button" (click)="navigateToSports">
-            <ion-icon name="leaf" item-start></ion-icon>
-            Sports
-          </ion-item>
-          <ion-item type="button" (click)="navigateToOutdoorTours">
-            <ion-icon name="leaf" item-start></ion-icon>
-            Outdoor Tours
+            {{category.name}}
           </ion-item>
         </ion-list>
        

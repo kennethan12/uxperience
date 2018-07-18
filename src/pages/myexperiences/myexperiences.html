@@ -20,12 +20,23 @@
     </div>
    
     <ion-list>
-        <ion-item *ngFor="let product of products">
-          <ion-card>
+        <ion-list-header>
+            What you experienced
+        </ion-list-header>
+        <ion-item *ngFor="let product of boughtProducts">
           <h2>{{product.name}}</h2>
-          <p>{{product.provider_id}}</p>
+          <button ion-button clear item-end color="accent1" (click)="navigateToEditProduct(product)">View details</button>
+        </ion-item>
+      </ion-list> 
+    <ion-list>
+
+      
+        <ion-list-header>
+            What you host
+        </ion-list-header>
+        <ion-item *ngFor="let product of products">
+          <h2>{{product.name}}</h2>
           <button ion-button clear item-end color="accent1" (click)="navigateToEditProduct(product)">Edit details</button>
-        </ion-card>
         </ion-item>
       </ion-list>
    

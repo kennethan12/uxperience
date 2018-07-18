@@ -52,8 +52,8 @@ export class ProductPage {
   }
   initMap() {
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
-      zoom: 7,
-      center: {lat: 41.85, lng: -87.65}
+      zoom: 15,
+      center: {lat: -33.906985, lng: 18.418393}
     });
 
     this.directionsDisplay.setMap(this.map);

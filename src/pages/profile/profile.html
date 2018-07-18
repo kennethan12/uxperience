@@ -1,32 +1,11 @@
-<ion-menu [content]="content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <button ion-item (click)="navigateToProducts">
-          Products
-        </button>
-        <button ion-item (click)="navigateToHistory">
-          History
-        </button>
-        <button ion-item (click)="navigate">
-          Events
-        </button>
-        <button ion-item (click)="closeMenu()">
-          Close Menu
-        </button>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-
 <ion-header>
-    <ion-navbar>
-        <p><ion-title>
-            Your Profile
-        </ion-title></p>
+    <ion-navbar style="height: 44px">
+        <ion-title>
+          Your Profile
+        </ion-title>
+        <button ion-button clear icon-only style="float: right;" (click)="navigateToSettings()">
+            <ion-icon name="settings"></ion-icon>
+          </button>
     </ion-navbar>
 </ion-header>
 
@@ -40,18 +19,14 @@
 
     <div text-center>
         <h1 style="margin-top: 10px">{{user.firstname}} {{user.lastname}}</h1>
-        <p>Age • Gender</p>
     </div>
+    <div text-center>
+        <button ion-button clear color='dark' (click)="navigateToExperiences()">View my experiences</button>
+    </div> 
     <div text-center>
         <button ion-button clear color='dark' (click)="navigateToHistory()">Your Payment History</button>
         <button ion-button clear color='accent1' (click)="navigateToHome()">Log out</button>
     </div> 
-
-
-    <div text-center>
-      <button ion-button clear color='dark' (click)="navigateToExperiences()">View my experiences</button>
-  </div> 
-
 
   
 </ion-content>

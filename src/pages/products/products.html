@@ -1,10 +1,13 @@
 <ion-header>
   
-  <ion-navbar hideBackButton>
+  <ion-navbar hideBackButton style="height: 44px">
     <ion-title>
       
       Explore
     </ion-title>
+    <button ion-button clear icon-only style="float: right;" (click)="navigateToAddProduct()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
   </ion-navbar>
 </ion-header>
 
@@ -18,19 +21,16 @@
       <ion-list-header>
           Near You
       </ion-list-header>
-      <ion-item *ngFor="let product of products">
+      <ion-item *ngFor="let product of products" (click)="navigateToProduct(product)">
          <!-- <ion-thumbnail item-start>
               <img src="{{product.imageThumbnail}}">
           </ion-thumbnail>  -->
           <h2>{{product.name}}</h2>
-          <button ion-button clear item-end color="accent1" (click)="navigateToProduct(product)">View</button>
+          <p>{{product.description}}</p>
+          <button ion-button clear item-end color="accent1">View</button>
       </ion-item>
   </ion-list>
 
-  <div text-center style="bottom: 10px">
-      <button ion-button color="accent1" round (click)="navigateToProfile()">Profile</button>
-      <button ion-button color="accent1" round (click)="navigateToAddProduct()">Add A Product</button>
-  </div>
 </ion-content>
 
 

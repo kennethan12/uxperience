@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import { NavController, NavParams, IonicPage, App, AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { HistoryPage } from '../history/history';
 import { Http } from '@angular/http';
 import { User } from '../models/user';
 import { MyexperiencesPage } from '../myexperiences/myexperiences';
+import { SettingsPage } from '../settings/settings';
 
 @Component({
   selector: 'page-profile',
@@ -17,7 +18,9 @@ export class ProfilePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public http: Http
+    public http: Http,
+    private app: App,
+    public alertCtrl: AlertController
   ) {
 
     if (localStorage.getItem("TOKEN")) {
@@ -53,8 +56,27 @@ export class ProfilePage {
   navigateToHome() {
     console.log("Navigating to HomePage...");
 
-    localStorage.removeItem("TOKEN");
-    this.navCtrl.setRoot(HomePage);
+    const confirm = this.alertCtrl.create({
+      title: 'Log out?',
+      message: 'Logging out will refer you back to the home page.',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Log out',
+          handler: () => {
+            console.log('Log out clicked');
+            localStorage.removeItem("TOKEN");
+            this.app.getRootNav().setRoot(HomePage);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
   navigateToHistory() {
@@ -66,7 +88,15 @@ export class ProfilePage {
   navigateToExperiences() {
     console.log("Navigating to ExperiencesPage...");
 
-    this.navCtrl.push(MyexperiencesPage);
+    this.navCtrl.push(MyexperiencesPage, {
+      userParameter: this.user
+    });
 
-}
+  }
+
+  navigateToSettings() {
+    console.log("Navigating to SettingsPage...");
+
+    this.navCtrl.push(SettingsPage);
+  }
 }
