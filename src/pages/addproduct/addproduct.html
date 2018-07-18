@@ -45,6 +45,9 @@
 
 
     </ion-item>
+
+    
+
   </ion-list>
 
   <ion-list>
@@ -60,7 +63,28 @@
       <button style='font-size: 13px' color='accent1' ion-button clear (click)='addrow()'>Add</button>
       <button style='font-size: 13px' color='dark' ion-button clear (click)='deleterow()'>Delete</button>
   </ion-list>
+
+  <div class="container" style="margin: 15px">
+      <div class="card">
+      
+        <div class="card-body">
+          <h5 class="card-title">Upload an image for your experience:</h5>
+          <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+
+        </div>
+      </div>
+
+    </div>
+
+    
+
+    
+    
+    
+
+
+
   <div text-center>
-    <button color='accent1' ion-button (click)="addproduct(name, description, city)">Add Experience</button>
+    <button color='accent1' ion-button (click)="addproduct(name, description, city)" [disabled]="downloadURL == null">Add Experience</button>
   </div>
 </ion-content>

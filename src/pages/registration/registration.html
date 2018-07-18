@@ -7,37 +7,51 @@
 </ion-header>
 
 <ion-content padding style="background-color: #f8e9ce">
-        <div text-center>
-            <img width=50px height=50px src="../../assets/imgs/localhostlogo.png">
-        </div>
-        <p style="font-size: 20px; text-align: center">Welcome to the fun.</p>
-        
-        <ion-list>
-  
+    <div text-center>
+        <img width=50px height=50px src="../../assets/imgs/localhostlogo.png">
+    </div>
+    <p style="font-size: 20px; text-align: center">Welcome to the fun.</p>
+
+    <ion-list>
+
+
         <ion-item>
             <ion-input [(ngModel)]='firstname' type="text" placeholder="First Name"></ion-input>
         </ion-item>
-        
+
         <ion-item>
             <ion-input [(ngModel)]='lastname' type="text" placeholder="Last Name"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input [(ngModel)]='email' type="text" placeholder="Email"></ion-input>
+            <ion-input [(ngModel)]='email' type="text" placeholder="Email"></ion-input>
         </ion-item>
-      
+
         <ion-item>
-          <ion-input [(ngModel)]='password' type="password" placeholder="Password"></ion-input>
+            <ion-input [(ngModel)]='password' type="password" placeholder="Password"></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-input [(ngModel)]='confirmPassword' type="password" placeholder="Comfirm Password"></ion-input>
         </ion-item>
-      
+
+        <div class="container" style="margin: 15px">
+            <div class="card">
+
+                <div class="card-body">
+                    <h5 class="card-title">Profile Picture</h5>
+                    <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+
+                </div>
+            </div>
+
+        </div>
+
+
     </ion-list>
 
     <div text-center>
-    <button ion-button color="accent1" (click)="register()">Register</button>
-</div>
+        <button ion-button color="accent1" (click)="register()">Register</button>
+    </div>
 
 </ion-content>
