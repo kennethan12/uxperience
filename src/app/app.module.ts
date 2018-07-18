@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule, IonicPageModule, Menu } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
+
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -27,6 +29,7 @@ import { CategoryPage } from '../pages/category/category';
 import { ReviewsPage } from '../pages/reviews/reviews';
 import { ReviewService } from '../services/reviews.service';
 import { MyexperiencesPage } from '../pages/myexperiences/myexperiences';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +56,9 @@ import { MyexperiencesPage } from '../pages/myexperiences/myexperiences';
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    FormsModule
+    FormsModule,
+    
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -82,6 +87,7 @@ import { MyexperiencesPage } from '../pages/myexperiences/myexperiences';
     ProductService,
     LocationService,
     ReviewService,
+
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

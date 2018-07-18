@@ -6,7 +6,7 @@ export class Product {
     description: string;
     category_id: number;
     photo_url: string;
-    city: string;
+    //city: string;
 
     constructor() {}
   }

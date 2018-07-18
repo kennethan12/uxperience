@@ -58,12 +58,14 @@ export class AddproductPage {
     this.rows.pop();
   }
 
-  addproduct(name: string, description: string, city:string ) {
+  addproduct(name: string, description: string 
+    //city:string 
+  ) {
 
     this.http.post('http://localhost:3000/addproduct?jwt='+localStorage.getItem("TOKEN"), {
       name: name,
-      description: description,
-      city: city
+      description: description
+      //city: city
     }).subscribe(
       result => {
         console.log(result.json());

@@ -19,10 +19,20 @@
           Near You
       </ion-list-header>
       <ion-item *ngFor="let product of products">
+
+          <ion-list>
+              <ion-item>
+                <ion-thumbnail item-start>
+                  <img src="{{product.imageThumbnail}}">
+                </ion-thumbnail>
+                <h2>{{product.name}}</h2>
+                <p>{{product.description}}</p>
+              </ion-item>
+             </ion-list>
          <!-- <ion-thumbnail item-start>
               <img src="{{product.imageThumbnail}}">
           </ion-thumbnail>  -->
-          <h2>{{product.name}}</h2>
+         
           <button ion-button clear item-end color="accent1" (click)="navigateToProduct(product)">View</button>
       </ion-item>
   </ion-list>
