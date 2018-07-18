@@ -1,22 +1,42 @@
 import { Product } from "../pages/models/product";
 import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
+import { callbackify } from "util";
 
 @Injectable()
 export class ProductService {
 
-    private products: Array<Product>;
+
+    
+
 
     constructor(public http: Http) {
-        this.products = [];
+
     }
 
-    /*
-        callback= function(err, data) {...}
-    */
+    getProductByCity(locationName: string, callback){
+
+
+        this.http.get("http://localhost:3000/productbylocation?city=" + locationName ).subscribe(
+
+            result => {
+
+                callback(null,result);
+            },
+            err => {
+                console.log(err);
+            }
+        )
+
+    }
+
+
+
+
+
+
     getAllProducts(callback) {
         // if (this.products.length) return this.products;
-
         this.http.get("http://localhost:3000/allproducts")
         .subscribe(
             result => {

@@ -30,6 +30,10 @@ import { MyexperiencesPage } from '../pages/myexperiences/myexperiences';
 import { SettingsPage } from '../pages/settings/settings';
 import { PaymentconfirmPage } from '../pages/paymentconfirm/paymentconfirm';
 
+//image upload imports INSTALL FIRST: npm i firebase angularfire2
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -53,13 +57,29 @@ import { PaymentconfirmPage } from '../pages/paymentconfirm/paymentconfirm';
     SettingsPage,
     PaymentconfirmPage
  ],
+
+
+
+
+
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp, {
       tabsHideOnSubPages: true,
     }),
-    FormsModule
+    FormsModule,
+
+
+
+    //for image uploads through firebase
+    AngularFireModule.initializeApp({
+    apiKey: "AIzaSyDjsynoR8uBbQ2-5C4rYdMEz5a7bbvjkyo",
+    authDomain: "localhost-80513.firebaseapp.com",
+    projectId: "localhost-80513",
+    storageBucket: "localhost-80513.appspot.com",
+    }),
+    AngularFireStorageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

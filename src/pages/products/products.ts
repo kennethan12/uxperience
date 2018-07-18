@@ -14,15 +14,17 @@ import { CategoriesPage } from '../categories/categories';
 
 @Component({
     selector: 'page-products',
-    templateUrl: 'products.html',
-    
-    
-    
+    templateUrl: 'products.html'
+
 })
 export class ProductsPage {
 
     public products: Array<Product>;
     public user: User = new User();
+
+
+
+
 
     constructor(
         public navCtrl: NavController,
@@ -33,17 +35,19 @@ export class ProductsPage {
         this.products = [];
 
         if (localStorage.getItem("TOKEN")) {
-      
+
             this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
-              .subscribe(
-                result => {
-                  console.log(result.json());
-                },
-                err => {
-                  console.log(err); // "Invalid log in"
-                }
-              );
-          }
+                .subscribe(
+                    result => {
+                        console.log(result.json());
+                    },
+                    err => {
+                        console.log(err); // "Invalid log in"
+                    }
+                );
+        }
+
+
     }
 
 
@@ -57,7 +61,7 @@ export class ProductsPage {
             this.products = data;
         })
     }
-    
+
 
     navigateToProduct(product: Product) {
 

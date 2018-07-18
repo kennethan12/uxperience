@@ -5,6 +5,13 @@ import { ProductsPage } from '../products/products';
 import { Time } from '@angular/common';
 import { ProductPage } from '../product/product';
 import { Category } from '../models/categories';
+//for image upload
+import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from 'angularfire2/storage';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators/map';
+import { LoadingController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
+
 
 /**
  * Generated class for the AddproductPage page.
@@ -20,6 +27,13 @@ import { Category } from '../models/categories';
 })
 export class AddproductPage {
 
+  //for image upload
+  ref: AngularFireStorageReference;
+  task: AngularFireUploadTask;
+  downloadURL: string = null;
+  uploadState: Observable<string>;
+  uploadProgress: Observable<number>;
+
   public name: string;
   public description: string;
   public price: string;
@@ -27,6 +41,7 @@ export class AddproductPage {
   public date: string[] = [];
   public time: string[] = [];
   public categories: Array<Category>;
+  public city: string;
 
   public row: any
   public rows: Array<{}> = [];
@@ -34,7 +49,10 @@ export class AddproductPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public http: Http
+    public http: Http,
+    private afStorage: AngularFireStorage,
+    public loadingCtrl: LoadingController,
+    private alertCtrl: AlertController
   ) {
 
 
@@ -53,6 +71,56 @@ export class AddproductPage {
     }
   }
 
+
+  upload(event) {
+    if (!event.target.files) return;
+
+
+    let loading = this.loadingCtrl.create({
+      spinner: 'crescent',
+      content: 'Uploading Image...',
+      duration: 21031231
+
+    });
+
+    loading.present();
+
+    setTimeout(() => {
+      loading.dismiss();
+
+      console.log("image upload is taking too long")
+
+    }, 60000);
+
+    const id = Math.random().toString(36).substring(2);
+    this.ref = this.afStorage.ref(id);
+    this.task = this.ref.put(event.target.files[0]);
+    this.uploadProgress = this.task.percentageChanges();
+    this.uploadState = this.task.snapshotChanges().pipe(map(s => s.state));
+
+
+
+    this.task.snapshotChanges().subscribe(
+      result => {
+        result.ref.getDownloadURL().then(dl => {
+          this.downloadURL = dl;
+          loading.dismiss();
+          console.log(this.downloadURL);
+        }).catch(err => {
+          console.log(err);
+        });
+      }
+    )
+
+
+
+
+
+
+
+  }
+
+
   addrow(): void {
     this.rows.push(this.row);
   }
@@ -63,9 +131,11 @@ export class AddproductPage {
 
   addproduct() {
 
+    console.log('DOWNLOAD URL CHECK 1 = ' + this.downloadURL);
+
     this.http.post('http://localhost:3000/addcategory', {
       name: this.category
-    }) 
+    })
       .subscribe(
         result => {
           console.log(result.json());
@@ -74,7 +144,9 @@ export class AddproductPage {
           this.http.post('http://localhost:3000/addproduct?jwt=' + localStorage.getItem("TOKEN"), {
             name: this.name,
             description: this.description,
-            category_id: categoryInfo.category_id
+            category_id: categoryInfo.category_id,
+            city: this.city,
+            photo_url: this.downloadURL
           }).subscribe(
             result => {
               console.log(result.json());

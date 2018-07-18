@@ -25,6 +25,9 @@
          <!-- <ion-thumbnail item-start>
               <img src="{{product.imageThumbnail}}">
           </ion-thumbnail>  -->
+          <ion-thumbnail item-start>
+          <img src={{product?.photo_url}} alt="Product Image">
+        </ion-thumbnail>
           <h2>{{product.name}}</h2>
           <p>{{product.description}}</p>
           <button ion-button clear item-end color="accent1">View</button>
