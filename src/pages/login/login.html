@@ -12,20 +12,7 @@
   <img width=50px height=50px src="../../assets/imgs/localhostlogo.png">
 </div>
   <p style="font-size: 20px; text-align: center">Log in to start exploring.</p>
-
-  <!--class notes
-  
-  <ion-input [(ngModel)] = "email"></ion-input>
-  <button ion-button (click)="pressMe(email, 2)">Press me</button>
-  <div *ngFor="let name of names">
-    {{name}}
-  </div>
-  <div *ngIf="flag==true">
-    {{complexObject.property1}}
-    {{complexObject.property2}}
-  </div>
-  end of notes-->
-
+  <p *ngIf="this.flag == true" style="font-size: 12px; color: #8e5572">Invalid email or password. Try again or sign up.</p>
   <ion-list>
 
     <ion-item>
@@ -44,3 +31,5 @@
   <!--<p style="text-align: center">Or <a href="#">sign up</a> here.</p>-->
 
 </ion-content>
+
+

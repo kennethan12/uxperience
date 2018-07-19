@@ -30,6 +30,7 @@ export class RegistrationPage {
   public password: string;
   public confirmPassword: string;
   public phone: string;
+  public flag: boolean;
   
   constructor(
     public navCtrl: NavController,
@@ -64,6 +65,7 @@ export class RegistrationPage {
       },
       err => {
         console.log(err);
+        this.flag = true;
       }
     )
   }

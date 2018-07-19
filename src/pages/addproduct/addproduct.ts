@@ -38,10 +38,12 @@ export class AddproductPage {
   public description: string;
   public price: string;
   public category: string;
+  public categoryOther: string;
   public date: string[] = [];
   public time: string[] = [];
   public categories: Array<Category>;
   public city: string;
+  public flag: boolean;
 
   public row: any
   public rows: Array<{}> = [];
@@ -132,7 +134,11 @@ export class AddproductPage {
   addproduct() {
 
     if (this.downloadURL === null) {
-      this.downloadURL = "../../assets/imgs/localhostlogo.png"
+      this.downloadURL = "../../assets/imgs/localhostlogo2.png"
+    }
+
+    if (this.category === 'other') {
+      this.category = this.categoryOther;
     }
 
     this.http.post('http://localhost:3000/addcategory', {
@@ -164,14 +170,19 @@ export class AddproductPage {
                     console.log(result.json());
                   }, err => {
                     console.log(err);
+                    this.flag = true;
                   }
                 )
               }
               this.navCtrl.setRoot(ProductsPage, productInfo)
             }, err => {
               console.log(err);
+              this.flag = true;
             }
           )
+        }, err => {
+          console.log(err);
+          this.flag = true;
         }
 
       )

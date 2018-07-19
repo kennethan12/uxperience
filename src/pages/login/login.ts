@@ -15,6 +15,7 @@ export class LoginPage {
 
   public email: string;
   public password: string;
+  public flag: boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -39,6 +40,7 @@ export class LoginPage {
       },
       err => {
         console.log(err);
+        this.flag = true;
       }
     )
   }
