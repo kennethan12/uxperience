@@ -25,25 +25,46 @@
         </ion-item>
 
         <ion-item>
-          <ion-input clearInput='true' [(ngModel)]='email' type="text" placeholder="Email"></ion-input>
+            <ion-input clearInput='true' [(ngModel)]='email' type="text" placeholder="Email"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input clearInput='true' [(ngModel)]='password' type="password" placeholder="Password"></ion-input>
+            <ion-input clearInput='true' [(ngModel)]='password' type="password" placeholder="Password"></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-input clearInput='true' [(ngModel)]='confirmPassword' type="password" placeholder="Comfirm Password"></ion-input>
         </ion-item>
 
-        <div class="container" style="margin: 15px">
+        <div >
             <div class="card">
 
-                <div class="card-body">
-                    <h5 class="card-title">Profile Picture</h5>
-                    <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+                <ion-card style="margin: 20px; width: 80%">
+                    <ion-card-header>
+                        <h5 class="card-title"><b>Profile Picture </b></h5>
+                    </ion-card-header>
 
-                </div>
+                    <ion-card-content>
+
+                        <div class="card-body">
+
+
+
+
+
+
+
+                            <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+
+
+
+
+                        </div>
+
+
+                    </ion-card-content>
+
+                </ion-card>
             </div>
 
         </div>

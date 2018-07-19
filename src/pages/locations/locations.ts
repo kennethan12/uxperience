@@ -3,6 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LocationPage } from '../location/location';
 import { Location } from '../models/location'
 import { LocationService } from '../../services/location.service';
+import { Product } from '../models/product';
+import { ProductService } from '../../services/product.service';
+import { Http } from '../../../node_modules/@angular/http';
+
 
 /**
  * Generated class for the LocationsPage page.
@@ -18,41 +22,50 @@ import { LocationService } from '../../services/location.service';
 })
 export class LocationsPage {
 
-  public locationService: LocationService;
+
+
+
+
+  public products: Array<Product>;
+  public productService: ProductService;
+  public location: Location = new Location();
+
   public locations: Array<Location>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public listings: Array<number>;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public locationService: LocationService ) {
 
     this.locations = [];
 
-    this.locationService = new LocationService();
+
+    locationService.getAllLocations().then((locations) => this.locations = locations);
 
 
-    this.locations = this.locationService.getAllLocations();
-
-
-
-  }
-
-
-
-
-
-
-  ionViewDidLoad() {
-
-
-
-
-
-  }
-
-  navigateToLocation(location:Location) {
-    console.log("Navigating to LocationPage...");
 
     
 
-    this.navCtrl.push(LocationPage, {locationParameter : location});
   }
+
+
+
+  
+
+
+ionViewDidLoad() {
+
+
+
+
+
+}
+
+navigateToLocation(location: Location) {
+  console.log("Navigating to LocationPage...");
+
+
+
+  this.navCtrl.push(LocationPage, { locationParameter: location });
+}
 
 }

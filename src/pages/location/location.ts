@@ -29,17 +29,20 @@ export class LocationPage {
     this.location = this.navParams.get("locationParameter"); //new Location()
 
 
-    productService.getProductByCity(this.location.name, (err, result)=>{
+    productService.getProductByCity(this.location.name)
+      .then(res => res.json())
+      .then(res => this.products = res);
+    //    (err, result)=>{
 
-      if(err){
+    //   if(err){
 
-        console.log("error!!! cant get product by city")
-      }
+    //     console.log("error!!! cant get product by city")
+    //   }
 
-      this.products = result.json();
-      console.log(this.products.length);
+    //   this.products = result.json();
+    //   console.log(this.products.length);
 
-    });
+    // });
     
   }
 
