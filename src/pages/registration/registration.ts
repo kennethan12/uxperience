@@ -51,7 +51,7 @@ export class RegistrationPage {
     }
 
     console.log(this.downloadURL + "HERE KITTY KITTY")
-    this.http.post('http://localhost:3000/registration', {
+    this.http.post('https://localhost-ix-fs-2-2018.herokuapp.com/registration', {
       firstname: this.firstname,
       lastname: this.lastname,
       email: this.email,

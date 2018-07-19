@@ -40,7 +40,7 @@ export class ProductPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductPage');
     this.initMap();
-    this.http.get('http://localhost:3000/producthost?provider_id='+this.product.provider_id
+    this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/producthost?provider_id='+this.product.provider_id
     ).subscribe(
       result => {
         console.log(result);

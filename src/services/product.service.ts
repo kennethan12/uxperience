@@ -17,7 +17,7 @@ export class ProductService {
     getProductByCity(locationName: string, callback){
 
 
-        this.http.get("http://localhost:3000/productbylocation?city=" + locationName ).subscribe(
+        this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/productbylocation?city=" + locationName ).subscribe(
 
             result => {
 
@@ -37,7 +37,7 @@ export class ProductService {
 
     getAllProducts(callback) {
         // if (this.products.length) return this.products;
-        this.http.get("http://localhost:3000/allproducts")
+        this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/allproducts")
         .subscribe(
             result => {
                 console.log(result);
@@ -53,7 +53,7 @@ export class ProductService {
 
     getUserProducts(callback) {
 
-        this.http.get("http://localhost:3000/myproducts")
+        this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/myproducts")
         .subscribe(
             result => {
                 console.log(result);

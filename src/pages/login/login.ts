@@ -24,7 +24,7 @@ export class LoginPage {
     {}
 
   login() {
-    this.http.post('http://localhost:3000/login', {
+    this.http.post('https://localhost-ix-fs-2-2018.herokuapp.com/login', {
       email: this.email,
       password: this.password
     }).subscribe(
