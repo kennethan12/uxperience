@@ -67,7 +67,7 @@ export class ReviewService {
 
    
    createReview(reviewData: Reviews, callback: Function) {
-       this.http.post("http://localhost:3000/addreview", reviewData)
+       this.http.post("https://localhost-ix-fs-2-2018.herokuapp.com/addreview", reviewData)
            .subscribe(
                result => {
                    callback(null, result.json());

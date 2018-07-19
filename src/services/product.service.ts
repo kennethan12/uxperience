@@ -18,6 +18,7 @@ export class ProductService {
 
 
     //     this.http.get("http://localhost:3000/productbylocation?city=" + locationName ).subscribe(
+        //this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/productbylocation?city=" + locationName ).subscribe(
 
     //         result => {
 
@@ -31,7 +32,7 @@ export class ProductService {
     // }
 
     async getProductByCity(locationName: string){
-        return this.http.get("http://localhost:3000/productbylocation?city=" + locationName ).toPromise();
+        return this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/productbylocation?city=" + locationName ).toPromise();
     }
 
 
@@ -40,7 +41,7 @@ export class ProductService {
 
     getAllProducts(callback) {
         // if (this.products.length) return this.products;
-        this.http.get("http://localhost:3000/allproducts")
+        this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/allproducts")
         .subscribe(
             result => {
                 console.log(result);
@@ -56,7 +57,7 @@ export class ProductService {
 
     getUserProducts(callback) {
 
-        this.http.get("http://localhost:3000/myproducts")
+        this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/myproducts")
         .subscribe(
             result => {
                 console.log(result);

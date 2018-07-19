@@ -6,6 +6,8 @@ import { ProductService } from '../../services/product.service';
 import { MenuPage } from '../menu/menu';
 import { Http } from '@angular/http';
 import { User } from '../models/user';
+import { Reviews } from '../models/reviews';
+import { ReviewService } from '../../services/reviews.service';
 
 /**
  * Generated class for the ProductPage page.
@@ -40,7 +42,7 @@ export class ProductPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductPage');
     this.initMap();
-    this.http.get('http://localhost:3000/producthost?provider_id='+this.product.provider_id
+    this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/producthost?provider_id='+this.product.provider_id
     ).subscribe(
       result => {
         console.log(result);

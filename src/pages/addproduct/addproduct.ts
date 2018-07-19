@@ -38,10 +38,12 @@ export class AddproductPage {
   public description: string;
   public price: string;
   public category: string;
+  public categoryOther: string;
   public date: string[] = [];
   public time: string[] = [];
   public categories: Array<Category>;
   public city: string;
+  public flag: boolean;
 
   public row: any
   public rows: Array<{}> = [];
@@ -59,7 +61,7 @@ export class AddproductPage {
 
     if (localStorage.getItem("TOKEN")) {
 
-      this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
+      this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/verify?jwt=" + localStorage.getItem("TOKEN"))
         .subscribe(
           result => {
             console.log(result.json());
@@ -132,10 +134,14 @@ export class AddproductPage {
   addproduct() {
 
     if (this.downloadURL === null) {
-      this.downloadURL = "../../assets/imgs/localhostlogo.png"
+      this.downloadURL = "../../assets/imgs/localhostlogo2.png"
     }
 
-    this.http.post('http://localhost:3000/addcategory', {
+    if (this.category === 'other') {
+      this.category = this.categoryOther;
+    }
+
+    this.http.post('https://localhost-ix-fs-2-2018.herokuapp.com/addcategory', {
       name: this.category
     })
       .subscribe(
@@ -143,7 +149,7 @@ export class AddproductPage {
           console.log(result.json());
           console.log("result.json()");
           let categoryInfo = result.json();
-          this.http.post('http://localhost:3000/addproduct?jwt=' + localStorage.getItem("TOKEN"), {
+          this.http.post('https://localhost-ix-fs-2-2018.herokuapp.com/addproduct?jwt=' + localStorage.getItem("TOKEN"), {
             name: this.name,
             description: this.description,
             category_id: categoryInfo.category_id,
@@ -155,7 +161,7 @@ export class AddproductPage {
               let productInfo = result.json()
               for (let i = 0; i < this.date.length; i++) {
 
-                this.http.post('http://localhost:3000/addmenu?product_id=' + productInfo.product_id, {
+                this.http.post('https://localhost-ix-fs-2-2018.herokuapp.com/addmenu?product_id=' + productInfo.product_id, {
                   price: this.price,
                   date: this.date[i],
                   time: this.time[i]
@@ -164,14 +170,19 @@ export class AddproductPage {
                     console.log(result.json());
                   }, err => {
                     console.log(err);
+                    this.flag = true;
                   }
                 )
               }
               this.navCtrl.setRoot(ProductsPage, productInfo)
             }, err => {
               console.log(err);
+              this.flag = true;
             }
           )
+        }, err => {
+          console.log(err);
+          this.flag = true;
         }
 
       )
@@ -182,7 +193,7 @@ export class AddproductPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddproductPage');
 
-    this.http.get('http://localhost:3000/allcategories')
+    this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/allcategories')
       .subscribe(
         result => {
           console.log(result)

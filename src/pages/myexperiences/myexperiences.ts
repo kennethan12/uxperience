@@ -32,7 +32,7 @@ export class MyexperiencesPage {
 
        if (localStorage.getItem("TOKEN")) {
      
-           this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
+           this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/verify?jwt=" + localStorage.getItem("TOKEN"))
              .subscribe(
                result => {
                  console.log(result.json());
@@ -49,7 +49,7 @@ export class MyexperiencesPage {
    ionViewDidLoad() {
        console.log('ionViewDidLoad ProductsPage');
 
-       this.http.get('http://localhost:3000/myproducts?user_id='+this.user.user_id)
+       this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/myproducts?user_id='+this.user.user_id)
        .subscribe(
         result => {
             console.log(result);
@@ -59,7 +59,7 @@ export class MyexperiencesPage {
             console.log(err);
         })
 
-        this.http.get('http://localhost:3000/myboughtproducts?user_id='+this.user.user_id)
+        this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/myboughtproducts?user_id='+this.user.user_id)
        .subscribe(
         result => {
             console.log(result);
