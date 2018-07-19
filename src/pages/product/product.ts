@@ -34,8 +34,6 @@ export class ProductPage {
   public product: Product = new Product();
   public user: User = new User();
   public productService: ProductService;
-  public reviews: Array<Reviews>;
-  public reviewService: ReviewService;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     this.product = this.navParams.get("productParameter"); //new Product()
@@ -53,7 +51,6 @@ export class ProductPage {
         console.log(err);
       }
     )
-    this.reviews = this.reviewService.getAllReviews();
   }
   initMap() {
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
