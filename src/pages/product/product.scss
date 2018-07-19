@@ -1,7 +1,11 @@
 page-product {
     div.transbox {
-        margin: 10px;
-        border: 1px solid black;
+
+       
+        // margin: 10px;
+        border: 1px solid transparent;
+        
+        background-color: white
        /*filter: alpha(opacity=60); For IE8 and earlier */
     }
       

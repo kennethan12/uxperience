@@ -8,28 +8,31 @@ export class ProductService {
 
 
     
+   
 
-
-    constructor(public http: Http) {
-
-    }
-
-    getProductByCity(locationName: string, callback){
-
-
-        this.http.get("http://localhost:3000/productbylocation?city=" + locationName ).subscribe(
-
-            result => {
-
-                callback(null,result);
-            },
-            err => {
-                console.log(err);
-            }
-        )
+    constructor( public http: Http) {
 
     }
 
+    // getProductByCity(locationName: string, callback){
+
+
+    //     this.http.get("http://localhost:3000/productbylocation?city=" + locationName ).subscribe(
+
+    //         result => {
+
+    //             callback(null,result);
+    //         },
+    //         err => {
+    //             console.log(err);
+    //         }
+    //     )
+
+    // }
+
+    async getProductByCity(locationName: string){
+        return this.http.get("http://localhost:3000/productbylocation?city=" + locationName ).toPromise();
+    }
 
 
 

@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Add An Experience</ion-title>
+    <ion-title  >Add An Experience</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -13,7 +13,7 @@
     <img width=50px height=50px src="../../assets/imgs/localhostlogo.png">
   </div>
 
-  <p style="font-size: 20px; text-align: center">Share your experience.</p>
+  <p style="font-size: 20px; text-align: center;">Share your experience.</p>
   <ion-list>
     <ion-list-header>
       Product details
@@ -49,7 +49,7 @@
 
     </ion-item>
 
-    
+
 
   </ion-list>
 
@@ -63,27 +63,42 @@
     </ion-item>
 
 
-      <button style='font-size: 13px' color='accent1' ion-button clear (click)='addrow()'>Add</button>
-      <button style='font-size: 13px' color='dark' ion-button clear (click)='deleterow()'>Delete</button>
+    <button style='font-size: 13px' color='accent1' ion-button clear (click)='addrow()'>Add</button>
+    <button style='font-size: 13px' color='dark' ion-button clear (click)='deleterow()'>Delete</button>
   </ion-list>
 
-  <div class="container" style="margin: 15px">
-      <div class="card">
-      
-        <div class="card-body">
-          <h5 class="card-title">Upload an image for your experience:</h5>
-          <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+  <div>
+    <div class="card">
 
-        </div>
-      </div>
+      <ion-card style="margin: 20px; width: 80%">
+        <ion-card-header>
+          <h5 class="card-title">
+            <b>Profile Picture </b>
+          </h5>
+        </ion-card-header>
 
+        <ion-card-content>
+
+          <div class="card-body">
+
+
+            <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+
+
+          </div>
+
+
+        </ion-card-content>
+
+      </ion-card>
     </div>
 
-    
+  </div>
 
-    
-    
-    
+
+
+
+
 
 
 

@@ -4,6 +4,7 @@ export class Location {
     id: number;
     image: string;
     imageThumbnail: string;
+    listings: number
 
     constructor() {}
 }

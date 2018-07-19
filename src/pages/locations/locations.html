@@ -13,6 +13,8 @@
 </ion-header>
 
 
+
+
 <ion-content style="background-color: #f8e9ce">
 
     <div text-center>
@@ -26,7 +28,7 @@
         <ion-card type="button" *ngFor="let location of locations" (click)="navigateToLocation(location)" >
           <img src={{location.image}}/>
           <div class="card-title">{{location.name}}</div>
-          <div class="card-subtitle">{{locations.length}} Listings</div>
+          <div class="card-subtitle">{{location.listings}} Listings</div>
         </ion-card>
     
 

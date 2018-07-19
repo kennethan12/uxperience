@@ -6,9 +6,9 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>{{product?.name}}</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>{{product?.name}}</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
@@ -18,11 +18,11 @@
     <h1 style="text-align: center; font-size: 20px">{{product?.name}}</h1>
 
     <div text-center>
-        
+
         <img style="width: 250px; height: 250px;" src={{product?.photo_url}} alt="Product Image">
 
     </div>
-    
+
 
     <div text-center>
         <p style="margin: 0px">Hosted by:
@@ -32,47 +32,64 @@
     </div>
 
     <div>
-        <div class="transbox">
-            <p> {{product?.description}} </p>
-        </div>
-    </div>
+        <ion-card class="transbox" style="margin-top: 15px; padding:15px; background-color: white; color: white">
+           
+           <ion-card-header style="margin-top: -20px; margin-left: -10px">
+                <b> Description: </b>
+           </ion-card-header>
+            
 
-    <div id="floating-panel">
+
+            <ion-card-content>
+
+                <p> {{product?.description}} </p>
+
+            </ion-card-content>
+
+
+
+
+        </ion-card>
+        </div>
+
+
+        <div id="floating-panel">
             <b>Start: </b>
             <select [(ngModel)]="start" id="start" (change)="calculateAndDisplayRoute()">
-              <option value="chicago, il">Chicago</option>
-              <option value="st louis, mo">St Louis</option>
-              <option value="joplin, mo">Joplin, MO</option>
-              <option value="oklahoma city, ok">Oklahoma City</option>
-              <option value="amarillo, tx">Amarillo</option>
-              <option value="gallup, nm">Gallup, NM</option>
-              <option value="flagstaff, az">Flagstaff, AZ</option>
-              <option value="winona, az">Winona</option>
-              <option value="kingman, az">Kingman</option>
-              <option value="barstow, ca">Barstow</option>
-              <option value="san bernardino, ca">San Bernardino</option>
-              <option value="los angeles, ca">Los Angeles</option>
-            </select><br>
+                <option value="chicago, il">Chicago</option>
+                <option value="st louis, mo">St Louis</option>
+                <option value="joplin, mo">Joplin, MO</option>
+                <option value="oklahoma city, ok">Oklahoma City</option>
+                <option value="amarillo, tx">Amarillo</option>
+                <option value="gallup, nm">Gallup, NM</option>
+                <option value="flagstaff, az">Flagstaff, AZ</option>
+                <option value="winona, az">Winona</option>
+                <option value="kingman, az">Kingman</option>
+                <option value="barstow, ca">Barstow</option>
+                <option value="san bernardino, ca">San Bernardino</option>
+                <option value="los angeles, ca">Los Angeles</option>
+            </select>
+            <br>
             <b>End: </b>
             <select [(ngModel)]="end" id="end" (change)="calculateAndDisplayRoute()">
-              <option value="chicago, il">Chicago</option>
-              <option value="st louis, mo">St Louis</option>
-              <option value="joplin, mo">Joplin, MO</option>
-              <option value="oklahoma city, ok">Oklahoma City</option>
-              <option value="amarillo, tx">Amarillo</option>
-              <option value="gallup, nm">Gallup, NM</option>
-              <option value="flagstaff, az">Flagstaff, AZ</option>
-              <option value="winona, az">Winona</option>
-              <option value="kingman, az">Kingman</option>
-              <option value="barstow, ca">Barstow</option>
-              <option value="san bernardino, ca">San Bernardino</option>
-              <option value="los angeles, ca">Los Angeles</option>
+                <option value="chicago, il">Chicago</option>
+                <option value="st louis, mo">St Louis</option>
+                <option value="joplin, mo">Joplin, MO</option>
+                <option value="oklahoma city, ok">Oklahoma City</option>
+                <option value="amarillo, tx">Amarillo</option>
+                <option value="gallup, nm">Gallup, NM</option>
+                <option value="flagstaff, az">Flagstaff, AZ</option>
+                <option value="winona, az">Winona</option>
+                <option value="kingman, az">Kingman</option>
+                <option value="barstow, ca">Barstow</option>
+                <option value="san bernardino, ca">San Bernardino</option>
+                <option value="los angeles, ca">Los Angeles</option>
             </select>
-            </div>
-            <div #map id="map"></div>
+        </div>
+        <div #map id="map"></div>
 
 
-    <div text-center>
-        <button ion-button color="dark" round (click)="navigateToMenu()">Sign Up</button>
-    </div>
+        <div text-center>
+            <button ion-button color="dark" round (click)="navigateToMenu()">Sign Up</button>
+        </div>
 </ion-content>
