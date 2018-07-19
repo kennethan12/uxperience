@@ -31,7 +31,7 @@ export class MyApp {
 
    if (localStorage.getItem("TOKEN")) {
 
-      this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com//verify?jwt=" + localStorage.getItem("TOKEN"))
+      this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/verify?jwt=" + localStorage.getItem("TOKEN"))
         .subscribe(
           result => {
             console.log(result.json());
