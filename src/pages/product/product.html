@@ -24,7 +24,7 @@
     </div>
 
 
-    <div text-center>
+    <div text-center style="margin: 10px">
         <p style="margin: 0px">Hosted by:
             <a style="color: #DA5F24">{{user?.firstname}} {{user?.lastname}}</a>
         </p>
@@ -52,8 +52,7 @@
         </ion-card>
         </div>
 
-
-        <div id="floating-panel">
+    <!--<div id="floating-panel">
             <b>Start: </b>
             <select [(ngModel)]="start" id="start" (change)="calculateAndDisplayRoute()">
                 <option value="chicago, il">Chicago</option>
@@ -93,8 +92,10 @@
         <p>{{review.description}}</p>
     </div>
 
+            </div>-->
+            <div #map id="map"></div>
 
-        <div text-center>
-            <button ion-button color="dark" round (click)="navigateToMenu()">Sign Up</button>
-        </div>
+    <div text-center>
+        <button ion-button color="dark" round (click)="navigateToMenu()">Sign Up</button>
+    </div>
 </ion-content>

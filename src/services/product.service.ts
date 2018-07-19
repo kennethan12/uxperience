@@ -32,7 +32,7 @@ export class ProductService {
     // }
 
     async getProductByCity(locationName: string){
-        return this.http.get("http://localhost:3000/productbylocation?city=" + locationName ).toPromise();
+        return this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/productbylocation?city=" + locationName ).toPromise();
     }
 
 
