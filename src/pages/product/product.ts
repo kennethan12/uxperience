@@ -6,6 +6,9 @@ import { ProductService } from '../../services/product.service';
 import { MenuPage } from '../menu/menu';
 import { Http } from '@angular/http';
 import { User } from '../models/user';
+import { ReviewsPage } from '../reviews/reviews';
+import { ReviewService } from '../../services/reviews.service';
+import { Reviews } from '../models/reviews';
 
 /**
  * Generated class for the ProductPage page.
@@ -32,6 +35,8 @@ export class ProductPage {
   public product: Product = new Product();
   public user: User = new User();
   public productService: ProductService;
+  public reviewService: ReviewService;
+  public reviews: Array<Reviews>
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     this.product = this.navParams.get("productParameter"); //new Product()
@@ -49,6 +54,9 @@ export class ProductPage {
         console.log(err);
       }
     )
+
+    this.reviews = this.reviewService.getAllReviews()
+
   }
   initMap() {
     this.map = new google.maps.Map(this.mapElement.nativeElement, {

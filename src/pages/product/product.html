@@ -71,6 +71,11 @@
             </div>
             <div #map id="map"></div>
 
+    <div *ngFor="let review of reviews">
+        <p>{{review.name}}</p>
+        <p>{{review.description}}</p>
+    </div>
+
 
     <div text-center>
         <button ion-button color="dark" round (click)="navigateToMenu()">Sign Up</button>
