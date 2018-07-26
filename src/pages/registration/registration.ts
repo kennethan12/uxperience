@@ -44,14 +44,17 @@ export class RegistrationPage {
 
   register() {
 
+
+    //verify email with @symbol
+
+
     //set profile picture to default angry cat if not given custom image
     if(this.downloadURL == null){
 
       this.downloadURL = "https://www.catster.com/wp-content/uploads/2017/08/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg";
     }
 
-    console.log(this.downloadURL + "HERE KITTY KITTY")
-    this.http.post('https://localhost-ix-fs-2-2018.herokuapp.com/registration', {
+    this.http.post('http://localhost:3000/registration', {
       firstname: this.firstname,
       lastname: this.lastname,
       email: this.email,
@@ -94,7 +97,7 @@ export class RegistrationPage {
     setTimeout(() => {
       loading.dismiss();
 
-      console.log("image upload is taking too long")
+      alert("image upload is taking too long. Register now and try again later")
       
     }, 60000);
 

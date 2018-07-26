@@ -37,7 +37,7 @@ uploadProgress: Observable<number>;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http,
-  
+  //for image upload
     private afStorage: AngularFireStorage,
     public loadingCtrl: LoadingController,
     private alertCtrl: AlertController) {
@@ -121,11 +121,6 @@ uploadProgress: Observable<number>;
         });
       }
     )
-
-    
-    
-
-
 
   }
 

@@ -24,17 +24,26 @@ export class LoginPage {
     {}
 
   login() {
-    this.http.post('https://localhost-ix-fs-2-2018.herokuapp.com/login', {
+    this.http.post('http://localhost:3000/login', {
       email: this.email,
       password: this.password
     }).subscribe(
       result => {
         console.log(result);
 
-        var jwtResponse = result.json();
-        var token = jwtResponse.token;
 
-        localStorage.setItem("TOKEN", token);
+        var element = <HTMLInputElement> document.getElementById("myCheck");
+        var isChecked = element.checked;
+
+        if(isChecked){
+
+          var jwtResponse = result.json();
+          var token = jwtResponse.token;
+  
+          localStorage.setItem("TOKEN", token);
+        }
+          
+        
         this.navCtrl.setRoot(TabsPage);
         // this.navCtrl.push(ProductsPage);
       },

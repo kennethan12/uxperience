@@ -27,19 +27,24 @@
       What you experienced
     </ion-list-header>
     <ion-item *ngFor="let product of boughtProducts">
+        <ion-thumbnail item-start>
+            <img src={{product?.photo_url}} alt="Product Image">
+          </ion-thumbnail>
       <h2>{{product.name}}</h2>
-      <button ion-button clear item-end color="accent1" (click)="navigateToEditProduct(product)">View details</button>
+      <button ion-button clear item-end color="accent1" (click)="navigateToProduct(product)">View Experience</button>
     </ion-item>
   </ion-list>
   <ion-list>
-
-
+    
     <ion-list-header>
       What you host
     </ion-list-header>
     <ion-item *ngFor="let product of products">
+        <ion-thumbnail item-start>
+            <img src={{product?.photo_url}} alt="Product Image">
+          </ion-thumbnail>
       <h2>{{product.name}}</h2>
-      <button ion-button clear item-end color="accent1" (click)="navigateToEditProduct(product)">Edit details</button>
+      <button ion-button clear item-end color="accent1" (click)="navigateToEditProduct(product)">Edit Details</button>
     </ion-item>
   </ion-list>
 

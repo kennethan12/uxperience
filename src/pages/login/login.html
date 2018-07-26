@@ -22,11 +22,25 @@
     <ion-item>
       <ion-input clearInput='true' [(ngModel)]="password" type="password" placeholder="Password"></ion-input>
     </ion-item>
+    
   
   </ion-list>
 
-  <button ion-button color="accent1" (click)="login()">Log In</button>
-  <button ion-button color="dark" clear (click)="navigateToRegistration()">Or Sign Up</button>
+  <div style="display:inline-block">  <p>Remember me</p> </div>
+  <input type="checkbox" id="myCheck" checked > 
+
+  <div>
+
+      <button ion-button color="accent1" (click)="login()">Log In</button>
+      <button ion-button color="dark" clear (click)="navigateToRegistration()">Or Sign Up</button>
+
+  </div>
+
+
+
+
+
+  
   
   <!--<p style="text-align: center">Or <a href="#">sign up</a> here.</p>-->
 

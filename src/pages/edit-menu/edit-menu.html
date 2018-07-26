@@ -1,0 +1,46 @@
+<!--
+  Generated template for the MenuPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Edit Dates and Times</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-list-header>
+      Available
+    </ion-list-header>
+    <ion-item *ngFor="let menu of menuItems; let i=index">
+      <!--<ion-thumbnail item-start>
+              <img src="{{product.imageThumbnail}}">
+          </ion-thumbnail>-->
+      <p>{{menu.date}} • {{menu.time}} • ${{menu.price}}</p>
+      <button ion-button clear item-end color="accent1" (click)="removeExistingRow(menu, i)">Remove</button>
+    </ion-item>
+
+    <ion-list-header>
+        Add more dates and times
+      </ion-list-header>
+
+    <ion-item *ngFor="let row of rows; let i=index">
+      <ion-input clearInput='true' [(ngModel)]='date[i]' type="text" placeholder='Date'></ion-input>
+      <ion-input clearInput='true' [(ngModel)]='time[i]' type="text" placeholder='Time'></ion-input>
+      <ion-input clearInput='true' [(ngModel)]='price[i]' type="number" placeholder='Price'></ion-input>
+    </ion-item>
+
+    <button style='font-size: 13px' color='accent1' ion-button clear (click)='addrow()'>Add</button>
+    <button style='font-size: 13px' color='accent1' ion-button clear (click)='deleterow()'>Delete</button>
+  </ion-list>
+
+  <button  ion-button style='font-size: 13px' color='accent1' (click)='addMenus()'>Save</button>
+
+</ion-content>

@@ -7,6 +7,8 @@ import { User } from '../models/user';
 import { MyexperiencesPage } from '../myexperiences/myexperiences';
 import { SettingsPage } from '../settings/settings';
 
+import { ToastController } from 'ionic-angular';
+
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html'
@@ -20,12 +22,13 @@ export class ProfilePage {
     public navParams: NavParams,
     public http: Http,
     private app: App,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public toastCtrl: ToastController
   ) {
 
     if (localStorage.getItem("TOKEN")) {
 
-      this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/verify?jwt=" + localStorage.getItem("TOKEN"))
+      this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
         .subscribe(
           result => {
             console.log(result.json());
@@ -41,7 +44,7 @@ export class ProfilePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
 
-    this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/user?jwt="+localStorage.getItem("TOKEN")
+    this.http.get("http://localhost:3000/user?jwt="+localStorage.getItem("TOKEN")
     ).subscribe(
       result => {
         console.log(result);
@@ -61,19 +64,22 @@ export class ProfilePage {
       message: 'Logging out will refer you back to the home page.',
       buttons: [
         {
-          text: 'Cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
           text: 'Log out',
           handler: () => {
             console.log('Log out clicked');
             localStorage.removeItem("TOKEN");
             this.app.getRootNav().setRoot(HomePage);
+            this.presentToast();
+            
+          }
+        },
+        {
+          text: 'Cancel',
+          handler: () => {
+            console.log('Cancel clicked');
           }
         }
+        
       ]
     });
     confirm.present();
@@ -88,7 +94,7 @@ export class ProfilePage {
   navigateToExperiences() {
     console.log("Navigating to ExperiencesPage...");
 
-    this.navCtrl.push(MyexperiencesPage, {
+    this.navCtrl.setRoot(MyexperiencesPage, {
       userParameter: this.user
     });
 
@@ -98,5 +104,22 @@ export class ProfilePage {
     console.log("Navigating to SettingsPage...");
 
     this.navCtrl.push(SettingsPage);
+  }
+
+  presentToast() {
+    const toast = this.toastCtrl.create({
+      message: 'You have been logged out successfully',
+      duration: 3000,
+      position: 'bottom'
+    });
+
+    toast.present();
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
+
   }
 }

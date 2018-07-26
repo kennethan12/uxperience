@@ -33,6 +33,8 @@ import { PaymentconfirmPage } from '../pages/paymentconfirm/paymentconfirm';
 //image upload imports INSTALL FIRST: npm i firebase angularfire2
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { EditMyProductPage } from '../pages/edit-my-product/edit-my-product';
+import { EditMenuPage } from '../pages/edit-menu/edit-menu';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     CategoryPage,
     ReviewsPage,
     SettingsPage,
-    PaymentconfirmPage
+    PaymentconfirmPage,
+    EditMyProductPage,
+    EditMenuPage
  ],
 
 
@@ -102,7 +106,9 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     CategoryPage,
     ReviewsPage,
     SettingsPage,
-    PaymentconfirmPage
+    PaymentconfirmPage,
+    EditMyProductPage,
+    EditMenuPage
   ],
   providers: [
     StatusBar,

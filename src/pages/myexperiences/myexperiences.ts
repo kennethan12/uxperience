@@ -10,6 +10,7 @@ import { LocationsPage } from '../locations/locations';
 import { LocationPage } from '../location/location';
 import { CategoriesPage } from '../categories/categories';
 import { User } from '../models/user';
+import { EditMyProductPage } from '../edit-my-product/edit-my-product';
 
 @Component({
    selector: 'page-myexperiences',
@@ -19,7 +20,7 @@ export class MyexperiencesPage {
 
    public products: Array<Product>;
    public boughtProducts: Array<Product>;
-   public user: User = new User();
+   public user: User = new User;
 
    constructor(
        public navCtrl: NavController,
@@ -28,20 +29,7 @@ export class MyexperiencesPage {
        public http: Http
    ) {
        this.products = [];
-       this.user = this.navParams.get("userParameter");
-
-       if (localStorage.getItem("TOKEN")) {
-     
-           this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/verify?jwt=" + localStorage.getItem("TOKEN"))
-             .subscribe(
-               result => {
-                 console.log(result.json());
-               },
-               err => {
-                 console.log(err); // "Invalid log in"
-               }
-             );
-         }
+      this.user = this.navParams.get("userParameter");
 
    }
 
@@ -49,7 +37,22 @@ export class MyexperiencesPage {
    ionViewDidLoad() {
        console.log('ionViewDidLoad ProductsPage');
 
-       this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/myproducts?user_id='+this.user.user_id)
+       if (localStorage.getItem("TOKEN")) {
+     
+        this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
+          .subscribe(
+            result => {
+              console.log(result.json().user);
+
+            },
+            err => {
+              console.log(err); // "Invalid log in"
+            }
+          );
+      }
+       
+
+       this.http.get('http://localhost:3000/myproducts?user_id=' + this.user.user_id)
        .subscribe(
         result => {
             console.log(result);
@@ -59,7 +62,7 @@ export class MyexperiencesPage {
             console.log(err);
         })
 
-        this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/myboughtproducts?user_id='+this.user.user_id)
+        this.http.get('http://localhost:3000/myboughtproducts?user_id=' + this.user.user_id)
        .subscribe(
         result => {
             console.log(result);
@@ -70,8 +73,19 @@ export class MyexperiencesPage {
         })
    }
    
-   navigateToEditProduct() {
+   navigateToEditProduct(product: Product) {
+    this.navCtrl.push(EditMyProductPage, {
+        productParameter: product
+    })
    }
+
+   navigateToProduct(product: Product) {
+
+
+    this.navCtrl.push(ProductPage, {
+        productParameter: product,
+    })
+}
 
    navigateToAddProduct() {
      console.log("Navigating to AddproductPage...");

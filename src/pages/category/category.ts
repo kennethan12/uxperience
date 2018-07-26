@@ -33,7 +33,7 @@ export class CategoryPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CategoryPage');
 
-    this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/categoryproducts?category_id="+this.category.category_id)
+    this.http.get("http://localhost:3000/categoryproducts?category_id="+this.category.category_id)
     .subscribe(
       result => {
         console.log(result);
