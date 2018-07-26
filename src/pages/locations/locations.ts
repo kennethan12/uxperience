@@ -22,7 +22,9 @@ import { Http } from '../../../node_modules/@angular/http';
 })
 export class LocationsPage {
 
-
+  descending: boolean = false;
+  order: number;
+  column: string = 'name';
 
 
 
@@ -58,6 +60,11 @@ ionViewDidLoad() {
 
 
 
+}
+
+sort() {
+  this.descending = !this.descending;
+  this.order = this.descending ? 1 : -1;
 }
 
 navigateToLocation(location: Location) {

@@ -22,6 +22,10 @@ export class ProductsPage {
     public products: Array<Product>;
     public user: User = new User();
 
+    descending: boolean = false;
+    order: number;
+    column: string = 'name';
+
 
 
 
@@ -36,7 +40,7 @@ export class ProductsPage {
 
         if (localStorage.getItem("TOKEN")) {
 
-            this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/verify?jwt=" + localStorage.getItem("TOKEN"))
+            this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
                 .subscribe(
                     result => {
                         console.log(result.json());
@@ -60,6 +64,11 @@ export class ProductsPage {
             }
             this.products = data;
         })
+    }
+
+    sort() {
+        this.descending = !this.descending;
+        this.order = this.descending ? 1 : -1;
     }
 
 
@@ -89,7 +98,7 @@ export class ProductsPage {
         this.navCtrl.push(LocationsPage);
     }
 
-  
+
 }
 
 

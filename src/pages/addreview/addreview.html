@@ -1,0 +1,46 @@
+<!--
+  Generated template for the AddreviewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Add Review</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      Add a review for '{{product?.name}}'
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Rating</ion-label>
+      <ion-select [(ngModel)]='rating' interface="popover">
+        <ion-option value='0'>0</ion-option>
+        <ion-option value='1'>1</ion-option>
+        <ion-option value='2'>2</ion-option>
+        <ion-option value='3'>3</ion-option>
+        <ion-option value='4'>4</ion-option>
+        <ion-option value='5'>5</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item text-wrap>
+      <ion-textarea autocorrect='on' clearInput='true' [(ngModel)]='description' type="text" placeholder="Review Here"></ion-textarea>
+    </ion-item>
+
+  </ion-list>
+
+  <p *ngIf="this.flag == true" style="font-size: 12px; color: #8e5572">You've already reviewed this product.</p>
+
+  <div text-center>
+    <button color='accent1' ion-button (click)="addReview()">Add Review</button>
+  </div>
+
+</ion-content>

@@ -17,20 +17,23 @@
 
 <ion-content style="background-color: #f8e9ce">
 
-    <div text-center>
-        <img width=50px height=50px src="../../assets/imgs/localhostlogo.png">
-      </div>
-      
-    <div class="card-background-page">
+  <div text-center>
+    <img width=50px height=50px src="../../assets/imgs/localhostlogo.png">
+  </div>
 
-      
+  <ion-searchbar [(ngModel)]="terms" [showCancelButton]="shouldShowCancel" (ionCancel)="sort()">
+  </ion-searchbar>
 
-        <ion-card type="button" *ngFor="let location of locations" (click)="navigateToLocation(location)" >
-          <img class="img" height="100%" src={{location.image}}/>
-          <div class="card-title">{{location.name}}</div>
-          <div class="card-subtitle">{{location.listings}} Listings</div>
-        </ion-card>
-    
+  <div class="card-background-page">
 
-      </div>
+
+
+    <ion-card type="button" *ngFor="let location of locations | search: terms | sort: {property: column, order: order}" (click)="navigateToLocation(location)">
+      <img class="img" height="100%" src={{location.image}}/>
+      <div class="card-title">{{location.name}}</div>
+      <div class="card-subtitle">{{location.listings}} Listings</div>
+    </ion-card>
+
+
+  </div>
 </ion-content>

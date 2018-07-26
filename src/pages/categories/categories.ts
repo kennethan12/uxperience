@@ -21,6 +21,10 @@ export class CategoriesPage {
   public categories: Array<Category> = [];
   public category: Category = new Category();
 
+  descending: boolean = false;
+  order: number;
+  column: string = 'name';
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -31,7 +35,7 @@ export class CategoriesPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CategoriesPage');
 
-    this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/allcategories")
+    this.http.get("http://localhost:3000/allcategories")
       .subscribe(
         result => {
           console.log(result)
@@ -40,6 +44,11 @@ export class CategoriesPage {
           console.log(err)
         }
       )
+  }
+
+  sort() {
+    this.descending = !this.descending;
+    this.order = this.descending ? 1 : -1;
   }
 
   navigateToCategory(category: Category) {

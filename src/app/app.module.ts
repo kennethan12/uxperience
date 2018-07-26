@@ -33,6 +33,11 @@ import { PaymentconfirmPage } from '../pages/paymentconfirm/paymentconfirm';
 //image upload imports INSTALL FIRST: npm i firebase angularfire2
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { OtherprofilePage } from '../pages/otherprofile/otherprofile';
+import { SearchPipe } from '../pipes/search/search';
+import { SortPipe } from '../pipes/sort/sort';
+import { FeaturesPage } from '../pages/features/features';
+import { AddreviewPage } from '../pages/addreview/addreview';
 
 @NgModule({
   declarations: [
@@ -55,13 +60,13 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     CategoryPage,
     ReviewsPage,
     SettingsPage,
-    PaymentconfirmPage
+    PaymentconfirmPage,
+    OtherprofilePage,
+    SearchPipe,
+    SortPipe,
+    FeaturesPage,
+    AddreviewPage
  ],
-
-
-
-
-
   imports: [
     BrowserModule,
     HttpModule,
@@ -69,9 +74,6 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
       tabsHideOnSubPages: true,
     }),
     FormsModule,
-
-
-
     //for image uploads through firebase
     AngularFireModule.initializeApp({
     apiKey: "AIzaSyDjsynoR8uBbQ2-5C4rYdMEz5a7bbvjkyo",
@@ -102,7 +104,10 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     CategoryPage,
     ReviewsPage,
     SettingsPage,
-    PaymentconfirmPage
+    PaymentconfirmPage,
+    OtherprofilePage,
+    FeaturesPage,
+    AddreviewPage
   ],
   providers: [
     StatusBar,

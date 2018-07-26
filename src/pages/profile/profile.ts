@@ -25,7 +25,7 @@ export class ProfilePage {
 
     if (localStorage.getItem("TOKEN")) {
 
-      this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/verify?jwt=" + localStorage.getItem("TOKEN"))
+      this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
         .subscribe(
           result => {
             console.log(result.json());
@@ -41,7 +41,7 @@ export class ProfilePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
 
-    this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/user?jwt="+localStorage.getItem("TOKEN")
+    this.http.get("http://localhost:3000/user?jwt="+localStorage.getItem("TOKEN")
     ).subscribe(
       result => {
         console.log(result);

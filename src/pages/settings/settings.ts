@@ -44,7 +44,7 @@ uploadProgress: Observable<number>;
 
     if (localStorage.getItem("TOKEN")) {
 
-      this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/verify?jwt=" + localStorage.getItem("TOKEN"))
+      this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
         .subscribe(
           result => {
             let payload = result.json();
@@ -99,7 +99,7 @@ uploadProgress: Observable<number>;
           loading.dismiss();
 
 
-          this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/changeprofilepic?url=' + this.downloadURL + '&userid='+this.user.user_id).subscribe(
+          this.http.get('http://localhost:3000/changeprofilepic?url=' + this.downloadURL + '&userid='+this.user.user_id).subscribe(
       result => {
         console.log(result);
 
