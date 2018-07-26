@@ -26,27 +26,17 @@ export class LocationService {
 
         var location1 = new Location();
 
-        location1.name = "Arizona";
+        location1.name = "Cape Town";
         location1.id = 1;
-        location1.image = "../assets/imgs/arizona-card.jpg"
+        location1.image = "../assets/imgs/cape-town.jpg"
         location1.listings = (await this.productService.getProductByCity(location1.name)).json().length;
-
-        // this.productService.getProductByCity(location1.name, (err, data)=>{
-
-        //     location1.listings = data.json().length;
-
-        // })
-
-
-        
-
 
 
         var location2 = new Location();
 
-        location2.name = "California";
+        location2.name = "Johannesburg";
         location2.id = 2;
-        location2.image = "../assets/imgs/california-card.jpg"
+        location2.image = "../assets/imgs/burg.jpg"
         location2.listings = (await this.productService.getProductByCity(location2.name)).json().length;
 
 
@@ -60,9 +50,9 @@ export class LocationService {
 
         var location3 = new Location();
 
-        location3.name = "New York";
+        location3.name = "Durban";
         location3.id = 3;
-        location3.image = "../assets/imgs/new-york-card.jpg"
+        location3.image = "../assets/imgs/d.jpg"
         location3.listings = (await this.productService.getProductByCity(location3.name)).json().length;
 
 
@@ -80,9 +70,9 @@ export class LocationService {
 
         var location4 = new Location();
 
-        location4.name = "Paris";
+        location4.name = "Port Elizabeth";
         location4.id = 4;
-        location4.image = "../assets/imgs/paris-card.jpg"
+        location4.image = "../assets/imgs/port.jpg"
         location4.listings = (await this.productService.getProductByCity(location4.name)).json().length;
 
 
