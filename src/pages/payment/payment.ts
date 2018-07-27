@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, OnDestroy, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Product } from '../models/product';
 import { HistoryPage } from '../history/history';
 import { Http } from '@angular/http';
@@ -19,7 +19,7 @@ import { PaymentconfirmPage } from '../paymentconfirm/paymentconfirm';
   selector: 'page-payment',
   templateUrl: 'payment.html',
 })
-export class PaymentPage implements AfterViewInit, OnDestroy{
+export class PaymentPage implements AfterViewInit, OnDestroy {
 
   @ViewChild('cardInfo') cardInfo: ElementRef;
 
@@ -31,17 +31,19 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
   public product: Product = new Product();
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public http: Http,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    public loadingCtrl: LoadingController,
+    private alertCtrl: AlertController
   ) {
 
     this.menu = this.navParams.get("menuParameter");
     this.product = this.navParams.get("productParameter");
 
     if (localStorage.getItem("TOKEN")) {
-      
+
       this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
         .subscribe(
           result => {
@@ -77,6 +79,19 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
   }
 
   async onSubmit(form: NgForm) {
+
+
+
+    //present loading
+    let loading = this.loadingCtrl.create({
+      spinner: 'crescent',
+      content: 'Processing Payment...'
+
+    });
+
+    loading.present();
+
+
     const result = await stripe.createSource(this.card);
     // console.log(token);
     // console.log('@@@@@@');
@@ -89,6 +104,12 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
       console.log('Success!', source);
       // ...send the token to the your backend to process the charge
 
+
+
+
+
+
+
       this.http.post("http://localhost:3000/payments/?jwt=" + localStorage.getItem("TOKEN") + "&menu_id=" + this.menu.menu_id, {
         stripeToken: source,
         menuId: this.menu.menu_id
@@ -96,6 +117,10 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
         result => {
           var paymentConfirm = result.json();
           console.log(paymentConfirm)
+
+          loading.dismiss();
+
+
           this.navCtrl.push(PaymentconfirmPage, {
             productParameter: this.product,
             menuParameter: this.menu,
@@ -105,6 +130,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
 
         err => {
           console.log(err);
+          loading.dismiss();
         }
       )
     }
@@ -113,7 +139,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
   ionViewDidLoad() {
     console.log('ionViewDidLoad PaymentPage');
 
-    this.http.get("http://localhost:3000/productinfo?product_id="+this.product.product_id
+    this.http.get("http://localhost:3000/productinfo?product_id=" + this.product.product_id
     ).subscribe(
       result => {
         console.log(result)
@@ -122,7 +148,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
       }
     )
 
-    this.http.get("http://localhost:3000/menuinfo?menu_id="+this.menu.menu_id
+    this.http.get("http://localhost:3000/menuinfo?menu_id=" + this.menu.menu_id
     ).subscribe(
       result => {
         console.log(result)
@@ -135,7 +161,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
   navigateToHistory() {
     console.log("Navigating to HistoryPage...");
 
-    this.navCtrl.push(HistoryPage, {productParameter: this.product});
+    this.navCtrl.push(HistoryPage, { productParameter: this.product });
   }
 
   navigateToPaymentConfirm() {
@@ -147,6 +173,6 @@ export class PaymentPage implements AfterViewInit, OnDestroy{
     });
   }
 
-  
+
 
 }

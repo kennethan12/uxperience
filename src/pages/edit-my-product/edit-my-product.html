@@ -1,0 +1,108 @@
+<!--
+  Generated template for the EditMyProductPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Edit Experience</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-list-header style="margin-bottom: -5px">
+      Edit Product
+    </ion-list-header>
+    
+
+    <ion-item>
+
+        <ion-thumbnail item-start>
+
+          <img src={{product?.photo_url}} alt="Product Picture">
+
+        </ion-thumbnail>
+
+        <h2>Product Image:</h2>
+
+            <div class="card">
+
+                <ion-card>
+                    <ion-card-header>
+                        <h5 class="card-title"><b>Change Image</b></h5>
+                    </ion-card-header>
+
+                    <ion-card-content style="width: 100%">
+
+                        <div class="card-body">
+                            <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+                        </div>
+
+                    </ion-card-content>
+                </ion-card>
+            </div>
+
+      </ion-item>
+
+
+
+    <ion-item>
+
+      <h2>Name: {{product?.name}} </h2>
+      <button ion-button clear (click)="change_product_name()"><p style="color:#DA5F24;">Change</p></button>
+      <ion-input *ngIf="this.change_name == true" [(ngModel)]='this.changed_name' type="text" placeholder='New Name'></ion-input>
+    </ion-item>
+
+
+
+    
+
+    <ion-item>
+      <h2>Description: {{product?.description}}</h2> 
+      <button ion-button clear (click)="change_product_description()"><p style="color:#DA5F24;">Change</p></button>
+      <ion-input *ngIf="this.change_description == true" [(ngModel)]='this.changed_description' type="text" placeholder='New Description'></ion-input>
+    </ion-item>
+
+
+      <ion-item>
+        <h2>Category: {{product_category?.name}}</h2>
+
+           
+        <button ion-button clear (click)="change_product_category()"><p style="color:#DA5F24;">Change</p></button>
+
+        <ion-select *ngIf=" change_category == true " [(ngModel)]='this.changed_category' interface="action-sheet">
+            <ion-option *ngFor="let category of categories" value='{{category.name}}'>{{category?.name}}</ion-option>
+            <ion-option value='other'>Other</ion-option>
+          </ion-select>
+      </ion-item>
+  
+      <ion-item *ngIf="this.changed_category == 'other'">
+          <ion-label>Other:</ion-label>
+          <ion-input autocorrect='on' [(ngModel)]='this.other_category' type="text" placeholder="Other Category"></ion-input>
+        </ion-item>
+
+      <ion-item>
+          <h2>City: {{product?.city}}</h2>
+      </ion-item>
+
+
+      <ion-item>
+          <h2> Times Offered:<button ion-button clear (click)="navigateToEditMenu()"><p style="color:#DA5F24;">Change</p></button></h2>
+      </ion-item>
+
+
+      <button ion-button color="accent1" (click)="update_product()"> Update Product</button>
+
+      <button ion-button clear color="accent1" (click)="delete_product()"> Delete Product</button>
+     
+        
+
+  </ion-list>
+
+</ion-content>

@@ -31,10 +31,19 @@ export class LoginPage {
       result => {
         console.log(result);
 
-        var jwtResponse = result.json();
-        var token = jwtResponse.token;
 
-        localStorage.setItem("TOKEN", token);
+        var element = <HTMLInputElement> document.getElementById("myCheck");
+        var isChecked = element.checked;
+
+        if(isChecked){
+
+          var jwtResponse = result.json();
+          var token = jwtResponse.token;
+  
+          localStorage.setItem("TOKEN", token);
+        }
+          
+        
         this.navCtrl.setRoot(TabsPage);
         // this.navCtrl.push(ProductsPage);
       },

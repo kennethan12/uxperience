@@ -38,6 +38,8 @@ import { SearchPipe } from '../pipes/search/search';
 import { SortPipe } from '../pipes/sort/sort';
 import { FeaturesPage } from '../pages/features/features';
 import { AddreviewPage } from '../pages/addreview/addreview';
+import { EditMyProductPage } from '../pages/edit-my-product/edit-my-product';
+import { EditMenuPage } from '../pages/edit-menu/edit-menu';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import { AddreviewPage } from '../pages/addreview/addreview';
     SearchPipe,
     SortPipe,
     FeaturesPage,
-    AddreviewPage
+    AddreviewPage,
+    EditMyProductPage,
+    EditMenuPage
  ],
   imports: [
     BrowserModule,
@@ -107,7 +111,9 @@ import { AddreviewPage } from '../pages/addreview/addreview';
     PaymentconfirmPage,
     OtherprofilePage,
     FeaturesPage,
-    AddreviewPage
+    AddreviewPage,
+    EditMyProductPage,
+    EditMenuPage
   ],
   providers: [
     StatusBar,

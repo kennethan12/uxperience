@@ -35,7 +35,7 @@ export class ProductService {
             }
         )
     }
-
+    
     getUserProducts(callback) {
 
         this.http.get("http://localhost:3000/myproducts")

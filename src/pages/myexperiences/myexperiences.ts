@@ -1,81 +1,158 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, Menu } from 'ionic-angular';
-import { ProfilePage } from '../profile/profile';
 import { Product } from '../models/product';
 import { ProductPage } from '../product/product';
 import { ProductService } from '../../services/product.service';
 import { Http } from '@angular/http';
 import { AddproductPage } from '../addproduct/addproduct';
-import { LocationsPage } from '../locations/locations';
-import { LocationPage } from '../location/location';
-import { CategoriesPage } from '../categories/categories';
 import { User } from '../models/user';
+import { EditMyProductPage } from '../edit-my-product/edit-my-product';
+import { Chart } from 'chart.js';
+import { Transaction } from '../models/transaction';
 
 @Component({
-   selector: 'page-myexperiences',
-   templateUrl: 'myexperiences.html'
+    selector: 'page-myexperiences',
+    templateUrl: 'myexperiences.html'
 })
 export class MyexperiencesPage {
 
-   public products: Array<Product>;
-   public boughtProducts: Array<Product>;
-   public user: User = new User();
+    public products: Array<Product>;
+    public boughtProducts: Array<Product>;
+    public boughtProductsNames: Array<string> = [];
+    public boughtProductsPrices: Array<number> = [];
+    public user: User = new User;
+    public transactions: Array<Transaction>;
 
-   constructor(
-       public navCtrl: NavController,
-       public navParams: NavParams,
-       public productService: ProductService,
-       public http: Http
-   ) {
-       this.products = [];
-       this.user = this.navParams.get("userParameter");
+    @ViewChild('doughnutCanvas') doughnutCanvas;
+    doughnutChart: any;
 
-       if (localStorage.getItem("TOKEN")) {
-     
-           this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
-             .subscribe(
-               result => {
-                 console.log(result.json());
-               },
-               err => {
-                 console.log(err); // "Invalid log in"
-               }
-             );
-         }
+    constructor(
+        public navCtrl: NavController,
+        public navParams: NavParams,
+        public productService: ProductService,
+        public http: Http
+    ) {
+        this.products = [];
+        this.user = this.navParams.get("userParameter");
 
-   }
+        if (localStorage.getItem("TOKEN")) {
+
+            this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
+                .subscribe(
+                    result => {
+                        console.log(result.json());
+                    },
+                    err => {
+                        console.log(err); // "Invalid log in"
+                    }
+                );
+        }
+
+    }
 
 
-   ionViewDidLoad() {
-       console.log('ionViewDidLoad ProductsPage');
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad ProductsPage');
 
-       this.http.get('http://localhost:3000/myproducts?user_id='+this.user.user_id)
-       .subscribe(
-        result => {
-            console.log(result);
-            this.products = result.json()
-        },
-        err => {
-            console.log(err);
+        if (localStorage.getItem("TOKEN")) {
+
+            this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
+                .subscribe(
+                    result => {
+                        console.log(result.json().user);
+
+                    },
+                    err => {
+                        console.log(err); // "Invalid log in"
+                    }
+                );
+        }
+
+
+        this.http.get('http://localhost:3000/myproducts?user_id=' + this.user.user_id)
+            .subscribe(
+                result => {
+                    console.log(result);
+                    this.products = result.json()
+                },
+                err => {
+                    console.log(err);
+                })
+
+        this.http.get('http://localhost:3000/myboughtproducts?user_id=' + this.user.user_id)
+            .subscribe(
+                result => {
+                    console.log(result);
+                    this.boughtProducts = result.json()
+                },
+                err => {
+                    console.log(err);
+                })
+
+        this.http.get('http://localhost:3000/gettransactions?jwt=' + localStorage.getItem("TOKEN")
+        ).subscribe(
+            result => {
+                console.log(result);
+                this.transactions = result.json();
+                for (let transaction of this.transactions) {
+                    this.http.get('http://localhost:3000/history?transaction_id=' + transaction.transaction_id)
+                        .subscribe(
+                            result => {
+                                this.boughtProductsPrices.push(result.json().menu.price);
+                                this.boughtProductsNames.push(result.json().product.name);
+                                this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
+
+                                    type: 'doughnut',
+                                    data: {
+                                        labels: this.boughtProductsNames,
+                                        datasets: [{
+                                            label: 'What you bought',
+                                            data: this.boughtProductsPrices,
+                                            backgroundColor: [
+                                                'rgba(255, 99, 132, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)',
+                                                'rgba(255, 206, 86, 0.2)',
+                                                'rgba(75, 192, 192, 0.2)',
+                                                'rgba(153, 102, 255, 0.2)'
+                                            ],
+                                            hoverBackgroundColor: [
+                                                "#FF6384",
+                                                "#36A2EB",
+                                                "#FFCE56",
+                                                "#FF6384",
+                                                "#36A2EB"
+                                            ]
+                                        }]
+                                    }
+                                });
+                            }, err => {
+                                console.log(err);
+                            }
+                        )
+                };
+            }, err => {
+                console.log(err);
+            }
+        )
+    }
+
+    navigateToEditProduct(product: Product) {
+        this.navCtrl.push(EditMyProductPage, {
+            productParameter: product
         })
+    }
 
-        this.http.get('http://localhost:3000/myboughtproducts?user_id='+this.user.user_id)
-       .subscribe(
-        result => {
-            console.log(result);
-            this.boughtProducts = result.json()
-        },
-        err => {
-            console.log(err);
+    navigateToProduct(product: Product) {
+
+
+        this.navCtrl.push(ProductPage, {
+            productParameter: product,
         })
-   }
-   
-   navigateToEditProduct() {
-   }
+    }
 
-   navigateToAddProduct() {
-     console.log("Navigating to AddproductPage...");
+    navigateToAddProduct() {
+        console.log("Navigating to AddproductPage...");
 
-     this.navCtrl.push(AddproductPage);
- }
+        this.navCtrl.push(AddproductPage);
+    }
 }
