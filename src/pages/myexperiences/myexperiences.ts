@@ -9,6 +9,7 @@ import { User } from '../models/user';
 import { EditMyProductPage } from '../edit-my-product/edit-my-product';
 import { Chart } from 'chart.js';
 import { Transaction } from '../models/transaction';
+import { ProductsPage } from '../products/products';
 
 @Component({
     selector: 'page-myexperiences',
@@ -22,6 +23,8 @@ export class MyexperiencesPage {
     public boughtProductsPrices: Array<number> = [];
     public user: User = new User;
     public transactions: Array<Transaction>;
+    public boughtProductsBoolean: boolean = false;
+    public productsBoolean: boolean = false;
 
     @ViewChild('doughnutCanvas') doughnutCanvas;
     doughnutChart: any;
@@ -73,7 +76,8 @@ export class MyexperiencesPage {
             .subscribe(
                 result => {
                     console.log(result);
-                    this.products = result.json()
+                    this.products = result.json();
+                    //if (this.products.length > 0) { this.productsBoolean = true; }
                 },
                 err => {
                     console.log(err);
@@ -83,7 +87,8 @@ export class MyexperiencesPage {
             .subscribe(
                 result => {
                     console.log(result);
-                    this.boughtProducts = result.json()
+                    this.boughtProducts = result.json();
+                    //if (this.boughtProducts.length > 0) { this.boughtProductsBoolean = true; }
                 },
                 err => {
                     console.log(err);
@@ -154,5 +159,9 @@ export class MyexperiencesPage {
         console.log("Navigating to AddproductPage...");
 
         this.navCtrl.push(AddproductPage);
+    }
+
+    navigateToProducts() {
+        this.navCtrl.setRoot(ProductsPage);
     }
 }

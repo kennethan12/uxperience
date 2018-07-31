@@ -34,9 +34,8 @@
       <button ion-button clear item-end color="accent1" (click)="navigateToProduct(product)">View</button>
     </ion-item>
   </ion-list>
+  <canvas style="margin-top: 0px" #doughnutCanvas></canvas>
   <ion-list>
-
-    <canvas #doughnutCanvas></canvas>
 
     <ion-list-header>
       What you host
@@ -49,6 +48,14 @@
       <button ion-button clear item-end color="accent1" (click)="navigateToEditProduct(product)">Edit Details</button>
     </ion-item>
   </ion-list>
+
+  <!--<div text-center *ngIf='boughtProductsBoolean == false && productsBoolean == false'>
+    <h2>Looks like you don't have any experiences.</h2>
+    <h3>Don't miss out on the fun.</h3>
+    <div text-center>
+      <button ion-button color="accent1" round (click)="navigateToProducts()">Explore Excursions</button>
+    </div>
+  </div>-->
 
 
 </ion-content>
