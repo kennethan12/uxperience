@@ -21,12 +21,12 @@ export class HomePage {
 
     if (localStorage.getItem("TOKEN")) {
 
-      this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
+      this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/verify?jwt=" + localStorage.getItem("TOKEN"))
         .subscribe(
           result => {
             console.log(result.json());
             this.navCtrl.push(ProductsPage);
-            
+
           },
           err => {
             console.log(err); // "Invalid log in"

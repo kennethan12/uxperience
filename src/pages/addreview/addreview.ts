@@ -24,7 +24,7 @@ export class AddreviewPage {
   public flag: boolean;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public http: Http
   ) {
@@ -36,30 +36,30 @@ export class AddreviewPage {
   }
 
   addReview() {
-    this.http.post('http://localhost:3000/addreview?jwt='
-    +localStorage.getItem("TOKEN")
-    +"&product_id="+this.product.product_id, {
-      rating: this.rating,
-      description: this.description
-    }).subscribe(
-      result => {
-        console.log(result);
-        this.http.get('http://localhost:3000/addrating?product_id='+this.product.product_id)
-        .subscribe(
-          result => {
-            console.log(result);
-            this.navCtrl.setRoot(ProductPage, {
-              productParameter: this.product
-            })
-          }, err => {
-            console.log(err);
-          }
-        )
-      }, err => {
-        console.log(err);
-        this.flag = true;
-      }
-    )
+    this.http.post('https://localhost-ix-fs-2-2018.herokuapp.com/addreview?jwt='
+      + localStorage.getItem("TOKEN")
+      + "&product_id=" + this.product.product_id, {
+        rating: this.rating,
+        description: this.description
+      }).subscribe(
+        result => {
+          console.log(result);
+          this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/addrating?product_id=' + this.product.product_id)
+            .subscribe(
+              result => {
+                console.log(result);
+                this.navCtrl.setRoot(ProductPage, {
+                  productParameter: this.product
+                })
+              }, err => {
+                console.log(err);
+              }
+            )
+        }, err => {
+          console.log(err);
+          this.flag = true;
+        }
+      )
   }
 
 }

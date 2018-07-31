@@ -20,11 +20,10 @@ export class LoginPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public http: Http) 
-    {}
+    public http: Http) { }
 
   login() {
-    this.http.post('http://localhost:3000/login', {
+    this.http.post('https://localhost-ix-fs-2-2018.herokuapp.com/login', {
       email: this.email,
       password: this.password
     }).subscribe(
@@ -32,18 +31,18 @@ export class LoginPage {
         console.log(result);
 
 
-        var element = <HTMLInputElement> document.getElementById("myCheck");
+        var element = <HTMLInputElement>document.getElementById("myCheck");
         var isChecked = element.checked;
 
-        if(isChecked){
+        if (isChecked) {
 
           var jwtResponse = result.json();
           var token = jwtResponse.token;
-  
+
           localStorage.setItem("TOKEN", token);
         }
-          
-        
+
+
         this.navCtrl.setRoot(TabsPage);
         // this.navCtrl.push(ProductsPage);
       },

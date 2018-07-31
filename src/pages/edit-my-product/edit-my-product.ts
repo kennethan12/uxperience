@@ -74,7 +74,7 @@ export class EditMyProductPage {
 
     if (localStorage.getItem("TOKEN")) {
 
-      this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
+      this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/verify?jwt=" + localStorage.getItem("TOKEN"))
         .subscribe(
           result => {
             console.log(result.json());
@@ -94,7 +94,7 @@ export class EditMyProductPage {
 
 
     //turn category id into name
-    this.http.get('http://localhost:3000/categorybyid?category_id=' + this.product.category_id).subscribe(
+    this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/categorybyid?category_id=' + this.product.category_id).subscribe(
 
       result => {
         this.product_category = result.json() as Category;
@@ -109,7 +109,7 @@ export class EditMyProductPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditMyProductPage');
-    this.http.get('http://localhost:3000/allcategories')
+    this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/allcategories')
       .subscribe(
         result => {
           console.log(result)
@@ -123,7 +123,7 @@ export class EditMyProductPage {
   update_product() {
     //if other category is chosen, create it and assign it to passed in product
     if (this.other_category != null) {
-      this.http.post('http://localhost:3000/addcategory', {
+      this.http.post('https://localhost-ix-fs-2-2018.herokuapp.com/addcategory', {
         name: this.other_category
       }).subscribe(
         result => {
@@ -142,7 +142,7 @@ export class EditMyProductPage {
 
           //UPDATE PRODUCT AND CHANGE PAGE
 
-          this.http.post('http://localhost:3000/updateproduct?productid=' + this.product.product_id, {
+          this.http.post('https://localhost-ix-fs-2-2018.herokuapp.com/updateproduct?productid=' + this.product.product_id, {
 
             name: this.changed_product.name,
             description: this.changed_product.description,
@@ -154,7 +154,7 @@ export class EditMyProductPage {
 
               this.navCtrl.pop();
 
-              
+
 
             },
             err => {
@@ -175,7 +175,7 @@ export class EditMyProductPage {
     //for some reason changed_category is a string
     else if (this.changed_category != null) {
 
-      this.http.get('http://localhost:3000/categorybyname?category_name=' + this.changed_category).subscribe(
+      this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/categorybyname?category_name=' + this.changed_category).subscribe(
         result => {
 
           let categoryInfo: Category = result.json();
@@ -191,7 +191,7 @@ export class EditMyProductPage {
           this.changed_product.description = this.changed_description;
 
           //UPDATE PRODUCT AND CHANGE PAGE
-          this.http.post('http://localhost:3000/updateproduct?productid=' + this.product.product_id, {
+          this.http.post('https://localhost-ix-fs-2-2018.herokuapp.com/updateproduct?productid=' + this.product.product_id, {
 
             name: this.changed_product.name,
             description: this.changed_product.description,
@@ -225,7 +225,7 @@ export class EditMyProductPage {
 
       //UPDATE PRODUCT AND CHANGE PAGE
 
-      this.http.post('http://localhost:3000/updateproduct?productid=' + this.product.product_id, {
+      this.http.post('https://localhost-ix-fs-2-2018.herokuapp.com/updateproduct?productid=' + this.product.product_id, {
 
         name: this.changed_product.name,
         description: this.changed_product.description,
@@ -266,22 +266,22 @@ export class EditMyProductPage {
             console.log('Remove item clicked');
 
 
-            this.http.get('http://localhost:3000/deleteproduct?productid=' + this.product.product_id).subscribe(
-              
-            result => { 
-              this.navCtrl.setRoot(MyexperiencesPage, {userParameter:this.user});
+            this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/deleteproduct?productid=' + this.product.product_id).subscribe(
 
-              this.presentToast();
+              result => {
+                this.navCtrl.setRoot(MyexperiencesPage, { userParameter: this.user });
+
+                this.presentToast();
 
 
-            },
+              },
 
               err => {
                 console.log(err);
               });
 
 
-              
+
 
           }
         },
@@ -291,7 +291,7 @@ export class EditMyProductPage {
             console.log('Cancel clicked');
           }
         },
-        
+
       ]
     });
     confirm.present();
@@ -369,7 +369,7 @@ export class EditMyProductPage {
           loading.dismiss();
 
 
-          this.http.get('http://localhost:3000/changeproductpic?url=' + this.downloadURL + '&productID=' + this.product.product_id).subscribe(
+          this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/changeproductpic?url=' + this.downloadURL + '&productID=' + this.product.product_id).subscribe(
             result => {
               console.log(result);
 
@@ -405,7 +405,7 @@ export class EditMyProductPage {
     toast.onDidDismiss(() => {
       console.log('Dismissed toast');
     });
-  
+
     toast.present();
 
   }

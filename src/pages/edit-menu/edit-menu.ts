@@ -42,7 +42,7 @@ export class EditMenuPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
 
-    this.http.get('http://localhost:3000/allmenuinfo?product_id=' + this.product.product_id)
+    this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/allmenuinfo?product_id=' + this.product.product_id)
       .subscribe(
         result => (
           console.log(result),
@@ -77,7 +77,7 @@ export class EditMenuPage {
   }
 
   removeExistingRow(menu: Menu, i: number) {
-    this.http.get('http://localhost:3000/deletemenu?menu_id=' + menu.menu_id).subscribe(
+    this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/deletemenu?menu_id=' + menu.menu_id).subscribe(
       result => {
 
         console.log(result);
@@ -103,7 +103,7 @@ export class EditMenuPage {
 
       if (this.price[i] != null && this.date[i] != null && this.time[i] != null) {
 
-        this.http.post('http://localhost:3000/addmenu?product_id=' + this.product.product_id, {
+        this.http.post('https://localhost-ix-fs-2-2018.herokuapp.com/addmenu?product_id=' + this.product.product_id, {
           price: this.price[i],
           date: this.date[i],
           time: this.time[i]
@@ -123,10 +123,10 @@ export class EditMenuPage {
 
     }
     this.rows = [];
-       this.row = null;
-       this.price = [];
-       this.date = [];
-       this.time = [];
+    this.row = null;
+    this.price = [];
+    this.date = [];
+    this.time = [];
 
 
 

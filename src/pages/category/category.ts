@@ -27,29 +27,29 @@ export class CategoryPage {
     public navParams: NavParams,
     public http: Http
   ) {
-      this.category = this.navParams.get("categoryParameter");
+    this.category = this.navParams.get("categoryParameter");
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CategoryPage');
 
-    this.http.get("http://localhost:3000/categoryproducts?category_id="+this.category.category_id)
-    .subscribe(
-      result => {
-        console.log(result);
-        this.products = result.json();
-      }, err => {
-        console.log(err);
-      }
-    )
+    this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/categoryproducts?category_id=" + this.category.category_id)
+      .subscribe(
+        result => {
+          console.log(result);
+          this.products = result.json();
+        }, err => {
+          console.log(err);
+        }
+      )
   }
 
   navigateToProduct(product: Product) {
 
 
     this.navCtrl.push(ProductPage, {
-        productParameter: product,
+      productParameter: product,
     })
-}
+  }
 
 }

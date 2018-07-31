@@ -48,7 +48,7 @@ export class ProductPage {
 
     if (localStorage.getItem("TOKEN")) {
 
-      this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
+      this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/verify?jwt=" + localStorage.getItem("TOKEN"))
         .subscribe(
           result => {
             console.log(result.json());
@@ -64,7 +64,7 @@ export class ProductPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductPage');
     this.initMap();
-    this.http.get('http://localhost:3000/producthost?provider_id=' + this.product.provider_id
+    this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/producthost?provider_id=' + this.product.provider_id
     ).subscribe(
       result => {
         console.log(result);
@@ -73,7 +73,7 @@ export class ProductPage {
         console.log(err);
       }
     )
-    this.http.get('http://localhost:3000/getreviews?product_id=' + this.product.product_id
+    this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/getreviews?product_id=' + this.product.product_id
     ).subscribe(
       result => {
         console.log(result);

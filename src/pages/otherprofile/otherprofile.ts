@@ -21,7 +21,7 @@ export class OtherprofilePage {
   public host: User = new User();
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public http: Http
   ) {
@@ -31,15 +31,15 @@ export class OtherprofilePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad OtherprofilePage');
 
-    this.http.get("http://localhost:3000/producthost?provider_id="+this.user.user_id)
-    .subscribe(
-      result => {
-        console.log(result);
-        this.host = result.json();
-      }, err => {
-        console.log(err);
-      }
-    )
+    this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/producthost?provider_id=" + this.user.user_id)
+      .subscribe(
+        result => {
+          console.log(result);
+          this.host = result.json();
+        }, err => {
+          console.log(err);
+        }
+      )
   }
 
 }

@@ -35,7 +35,7 @@ export class CategoriesPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CategoriesPage');
 
-    this.http.get("http://localhost:3000/allcategories")
+    this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/allcategories")
       .subscribe(
         result => {
           console.log(result)

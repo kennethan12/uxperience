@@ -44,7 +44,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy {
 
     if (localStorage.getItem("TOKEN")) {
 
-      this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
+      this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/verify?jwt=" + localStorage.getItem("TOKEN"))
         .subscribe(
           result => {
             console.log(result.json());
@@ -110,7 +110,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy {
 
 
 
-      this.http.post("http://localhost:3000/payments/?jwt=" + localStorage.getItem("TOKEN") + "&menu_id=" + this.menu.menu_id, {
+      this.http.post("https://localhost-ix-fs-2-2018.herokuapp.com/payments/?jwt=" + localStorage.getItem("TOKEN") + "&menu_id=" + this.menu.menu_id, {
         stripeToken: source,
         menuId: this.menu.menu_id
       }).subscribe(
@@ -139,7 +139,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PaymentPage');
 
-    this.http.get("http://localhost:3000/productinfo?product_id=" + this.product.product_id
+    this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/productinfo?product_id=" + this.product.product_id
     ).subscribe(
       result => {
         console.log(result)
@@ -148,7 +148,7 @@ export class PaymentPage implements AfterViewInit, OnDestroy {
       }
     )
 
-    this.http.get("http://localhost:3000/menuinfo?menu_id=" + this.menu.menu_id
+    this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/menuinfo?menu_id=" + this.menu.menu_id
     ).subscribe(
       result => {
         console.log(result)

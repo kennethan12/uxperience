@@ -40,7 +40,7 @@ export class MyexperiencesPage {
 
         if (localStorage.getItem("TOKEN")) {
 
-            this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
+            this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/verify?jwt=" + localStorage.getItem("TOKEN"))
                 .subscribe(
                     result => {
                         console.log(result.json());
@@ -59,7 +59,7 @@ export class MyexperiencesPage {
 
         if (localStorage.getItem("TOKEN")) {
 
-            this.http.get("http://localhost:3000/verify?jwt=" + localStorage.getItem("TOKEN"))
+            this.http.get("https://localhost-ix-fs-2-2018.herokuapp.com/verify?jwt=" + localStorage.getItem("TOKEN"))
                 .subscribe(
                     result => {
                         console.log(result.json().user);
@@ -72,7 +72,7 @@ export class MyexperiencesPage {
         }
 
 
-        this.http.get('http://localhost:3000/myproducts?user_id=' + this.user.user_id)
+        this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/myproducts?user_id=' + this.user.user_id)
             .subscribe(
                 result => {
                     console.log(result);
@@ -83,7 +83,7 @@ export class MyexperiencesPage {
                     console.log(err);
                 })
 
-        this.http.get('http://localhost:3000/myboughtproducts?user_id=' + this.user.user_id)
+        this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/myboughtproducts?user_id=' + this.user.user_id)
             .subscribe(
                 result => {
                     console.log(result);
@@ -94,13 +94,13 @@ export class MyexperiencesPage {
                     console.log(err);
                 })
 
-        this.http.get('http://localhost:3000/gettransactions?jwt=' + localStorage.getItem("TOKEN")
+        this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/gettransactions?jwt=' + localStorage.getItem("TOKEN")
         ).subscribe(
             result => {
                 console.log(result);
                 this.transactions = result.json();
                 for (let transaction of this.transactions) {
-                    this.http.get('http://localhost:3000/history?transaction_id=' + transaction.transaction_id)
+                    this.http.get('https://localhost-ix-fs-2-2018.herokuapp.com/history?transaction_id=' + transaction.transaction_id)
                         .subscribe(
                             result => {
                                 this.boughtProductsPrices.push(result.json().menu.price);
